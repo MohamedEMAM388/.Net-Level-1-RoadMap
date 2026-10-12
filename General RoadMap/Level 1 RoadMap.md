@@ -2,30 +2,30 @@
 
 # Sprint Specifications
 
-> **Final Project:** Gym Management API
-> **Path:** Advanced C# → LINQ → EF Core → ASP.NET Core Web API
-> **Duration:** 6 Sprints × 2 Weeks (14 days each · 84 days)
+> **Final Project:** Library Management API
+> **Path:** C# Collections & Generics → Delegates & Events → LINQ → EF Core → ASP.NET Core Web API
+> **Duration:** 6 Sprints (4 × 14 days + 2 × 15 days · 86 days)
 
 ---
 
 # 🗺️ Roadmap Overview
 
-| Sprint | Focus                                     | Days                | Project                                          |
-| ------ | ----------------------------------------- | ------------------- | ------------------------------------------------ |
-| 1      | Advanced C#                              | Day 1–14 (14 days)  | Job Application Tracker (Console)                |
-| 2      | LINQ                                      | Day 15–28 (14 days) | Sales Data Analytics Dashboard (Console)         |
-| 3      | Entity Framework Core                     | Day 29–42 (14 days) | Library Management System (EF Core)              |
-| 4      | Web API Foundations — Plans & Trainers    | Day 43–56 (14 days) | Gym Management API — Part 1 (8 endpoints)        |
-| 5      | Web API — Members & Sessions              | Day 57–70 (14 days) | Gym Management API — Part 2 (8 endpoints)        |
-| 6      | Web API — Memberships & Bookings          | Day 71–84 (14 days) | Gym Management API — Part 3 (7 endpoints)        |
+| Sprint | Focus                                      | Days                | Project                                                   |
+| ------ | ------------------------------------------ | ------------------- | --------------------------------------------------------- |
+| 1      | Collections & Generics                     | Day 1–14 (14 days)  | Job Application Tracker — Part 1: Data Foundation (Console) |
+| 2      | Delegates, Lambdas & Events                | Day 15–28 (14 days) | Job Application Tracker — Part 2: Workflows & Notifications (Console) |
+| 3      | LINQ                                       | Day 29–42 (14 days) | Sales Data Analytics Dashboard (Console)                  |
+| 4      | Entity Framework Core                      | Day 43–56 (14 days) | Library Management System (EF Core)                       |
+| 5      | Web API — Foundations, Services & Business Logic | Day 57–71 (15 days) | Library Management API — Part 1 (9 endpoints)       |
+| 6      | Web API — Unit of Work & Loans             | Day 72–86 (15 days) | Library Management API — Part 2 (+3 endpoints = 12)       |
 
-Total duration: **84 days** (6 sprints × 14 days).
+Total duration: **86 days** (Sprints 1–4 are 14 days each, Sprints 5–6 are 15 days each).
 
 ---
 
 # 🎯 Level 1 Goal
 
-The goal of Level 1 is to take the learner from solid C# fundamentals to building a working Web API on top of a database.
+The goal of Level 1 is to take the learner from solid C# fundamentals to building a working, layered Web API on top of a database.
 
 The learner should practice:
 
@@ -43,15 +43,26 @@ Explain
 
 Every sprint ends with a project, and every project uses what the previous sprints taught.
 
+**How the projects connect:**
+
+* Sprints 1–2 build **one** console project (Job Application Tracker) across two sprints. Sprint 2 continues the exact repository of Sprint 1.
+* Sprint 3 is a separate in-memory project (no database).
+* Sprint 4 adds a real database with EF Core (Library Management System).
+* Sprints 5–6 build **one** Web API (Library Management API) across two sprints. Sprint 6 improves the same solution; it is not a new project.
+
+**Sprint structure:** Sprints 1 and 2 follow a fixed **9 days study & practice, then 5 days project** split. Sprints 3 and 4 are task-based with Easy / Medium / Hard requirements. Sprints 5 and 6 are day-by-day plans where every day ends with a buildable project and a small commit.
+
 ---
 
-# 📅 Sprint 1 — Advanced C#
+# 📅 Sprint 1 — Collections & Generics
 
-**Day 1–14 · Project: Job Application Tracker (Console)**
+**Day 1–14 · Project: Job Application Tracker — Part 1 of 2 (Console)**
 
 ## 🎯 Sprint Goal
 
-Build a strong C# foundation: choosing the right collection, writing reusable generic code, and using delegates and events.
+Build a strong C# foundation: choose the right collection, write reusable generic code, and use both to build the **data foundation** of a console application.
+
+**Sprint rules:** no LINQ, no database, no Entity Framework. All data stays in memory.
 
 ---
 
@@ -61,12 +72,12 @@ Build a strong C# foundation: choosing the right collection, writing reusable ge
 
 Learn:
 
-* List
-* Dictionary
-* HashSet
-* Queue
-* Stack
-* How to choose the right collection
+* `List<T>`
+* `Dictionary<TKey, TValue>`
+* `HashSet<T>`
+* `Queue<T>`
+* `Stack<T>`
+* How to choose the right collection (access pattern, uniqueness, ordering)
 
 ---
 
@@ -74,112 +85,201 @@ Learn:
 
 Learn:
 
-* Generic classes
 * Generic methods
-* Constraints
-
----
-
-# 3. Delegates, Lambdas & Anonymous Methods
-
-Learn:
-
-* Func
-* Action
-* Predicate
-* Lambda expressions
-* Anonymous methods
-
----
-
-# 4. Events
-
-Learn:
-
-* Events
-* Event handlers
+* Generic classes
+* Constraints (`where`)
+* Type parameters and type arguments
 
 ---
 
 # 🛠️ Practical Implementation
 
-## Job Application Tracker (Console)
+## Job Application Tracker — Part 1 (Console)
 
-Build a console application that tracks job applications and uses:
+Build the data foundation of a console job portal: store and manage **companies, recruiters, jobs, and candidates** through console menus, using:
 
-* Collections and Generics
-* Delegates and Lambdas
-* Events
+* A generic `DataStore<T>` with `where T : class, IEntity`
+* A `Dictionary<int, Job>` kept consistent next to the jobs store
+* A `HashSet<string>` to check candidate email uniqueness
+* Fixed seed data (3 companies, 3 recruiters, 6 jobs, 5 candidates)
 
 ---
 
 # 📝 Sprint Tasks
 
-### Task 1 — Collections
+### Part 1 — Study & Practice (Day 1–9)
 
-*Day 1–2.* Practice List, Dictionary, HashSet, Queue, and Stack, and choose the right one for each case.
+| Day | Focus | Requirements |
+| --- | ----- | ------------ |
+| 1–2 | `List<T>`: add, remove, search, update | CL1 |
+| 3   | `Dictionary<TKey, TValue>` | CL2 |
+| 4   | `HashSet<T>` | CL3 |
+| 5   | `Queue<T>` and `Stack<T>` | CL4 |
+| 6   | Collections review and the required note | CL1–CL4 |
+| 7   | Generic methods | G1 |
+| 8   | Generic classes | G2 |
+| 9   | Constraints, `IEntity`, and the generics explanation | G1–G2 |
 
----
+### Part 2 — Build the Project (Day 10–14)
 
-### Task 2 — Generics
+| Day | Focus | Requirements |
+| --- | ----- | ------------ |
+| 10 | Models, seed data, and console menus | E1, E2 |
+| 11 | Generic `DataStore<T>` | M1 |
+| 12 | Basic operations for companies, recruiters, and candidates | E3 |
+| 13 | Job operations and the Dictionary lookup | E3, E5 |
+| 14 | Run all test scenarios, write the README, and tag `sprint-1` | Hand-off |
 
-*Day 3–4.* Write generic classes and generic methods with constraints.
-
----
-
-### Task 3 — Delegates & Lambdas
-
-*Day 5–6.* Use Func, Action, Predicate, lambda expressions, and anonymous methods.
-
----
-
-### Task 4 — Events
-
-*Day 7.* Create events and event handlers.
-
----
-
-### Task 5 — Sprint Project
-
-*Day 8–13.* Build the Job Application Tracker.
-
----
-
-### Task 6 — README
-
-*Day 14.* Document the project: overview, features, how to run, sample output, structure, design decisions, and known limitations.
+**Requirements:** CL1–CL4, G1, G2 (practice) · E1, E2, M1, E3, E5 (project) · **Test scenarios:** 1–5
 
 ---
 
 # 📦 Sprint Deliverables
 
-* Collections practice
-* Generics practice
-* Delegates, lambdas, and events practice
-* Job Application Tracker (Console)
+* Collections practice (List, Dictionary, HashSet, Queue, Stack) with a short note on why each was chosen
+* Generics practice (generic method, generic class, explanation of constraints)
+* Job Application Tracker — Part 1 (Console)
 * README
+* Final commit tagged `sprint-1`
 
 ---
 
 # ✅ Definition of Done
 
 * [ ] Right collection chosen for each case
-* [ ] Generic classes and methods work
-* [ ] Delegates and lambdas are used correctly
-* [ ] Events and event handlers work
-* [ ] Job Application Tracker works
+* [ ] Generic method and generic class work, and constraints are explained
+* [ ] All four entities are stored in `DataStore<T>` with no raw lists left
+* [ ] The jobs Dictionary stays consistent after every add, update, and remove
+* [ ] A Pending or Rejected company cannot get new jobs
+* [ ] Candidate email is unique (ignoring case), checked with a `HashSet`
+* [ ] Invalid input never crashes the application
+* [ ] Test scenarios 1–5 pass
+* [ ] The Hand-off to Sprint 2 checklist is complete
 
 ---
 
 # 🎓 Expected Outcome
 
-By the end of Sprint 1, the learner can write clean, reusable C# code using collections, generics, delegates, and events.
+By the end of Sprint 1, the learner can choose the right collection for each case, write clean reusable generic code, and has a working data foundation ready for Sprint 2.
 
 ---
 
-# 📅 Sprint 2 — LINQ
+# 📅 Sprint 2 — Delegates, Lambdas & Events
 
-**Day 15–28 · Project: Sales Data Analytics Dashboard (Console)**
+**Day 15–28 · Project: Job Application Tracker — Part 2 of 2 (Console)**
+
+## 🎯 Sprint Goal
+
+Learn to pass behavior through delegates and lambdas, notify subscribers using events, and use them to finish the Job Application Tracker started in Sprint 1.
+
+**Sprint rules:** no LINQ, no database. You do not start a new project: you open your Sprint 1 repository and add to it. The Sprint 1 Minimum level is the entry gate.
+
+---
+
+# 📚 What You Will Learn
+
+## 1. Delegates & Lambdas
+
+Learn:
+
+* `Func<T, TResult>`
+* `Action<T>`
+* `Predicate<T>`
+* `Comparison<T>`
+* Lambda expressions
+* When to choose each delegate type
+
+---
+
+# 2. Events
+
+Learn:
+
+* Declaring, raising, and subscribing to events
+* `EventHandler<T>`
+* Lambda handlers vs named-method handlers
+* Unsubscribing
+* What happens when a subscriber throws
+
+---
+
+# 🛠️ Practical Implementation
+
+## Job Application Tracker — Part 2 (Console)
+
+Extend the Sprint 1 project with:
+
+* `Find(Predicate<T>)` and `Sort(Comparison<T>)` on `DataStore<T>`
+* Search and sort for jobs (title keyword + minimum salary; sort by salary and title)
+* Company approval (approve / reject / list by status)
+* Applications: the `Application` entity, the `ApplicationStatus` enum, and the apply workflow
+* Duplicate-application protection with `HashSet<(int JobId, int CandidateId)>`
+* Three events with handlers: `CompanyApproved`, `ApplicationSubmitted`, `ApplicationStatusChanged`
+
+---
+
+# 📝 Sprint Tasks
+
+### Part 1 — Study & Practice (Day 15–23)
+
+| Day | Focus | Requirements |
+| --- | ----- | ------------ |
+| 15–16 | Delegates and lambda syntax; `Func<T, TResult>` and `Action<T>` | D1, D2 |
+| 17    | `Predicate<T>` | D3 |
+| 18    | `Comparison<T>` and sorting with a delegate | D4 |
+| 19    | Delegates review and the required note | D1–D4 |
+| 20    | Events: declare, raise, subscribe; `EventHandler<T>` | EV1 |
+| 21    | Handlers: lambda vs named method, and unsubscribing | EV1 |
+| 22    | Event practice and review (publisher, subscriber, a subscriber that throws) | EV1 |
+| 23    | Review all Sprint 2 topics, re-read Sprint 1 code, plan the changes | — |
+
+### Part 2 — Continue the Project (Day 24–28)
+
+| Day | Focus | Requirements |
+| --- | ----- | ------------ |
+| 24 | Search and sort on `DataStore<T>` | M3 |
+| 25 | Company approval and list by status | E4 |
+| 26 | Applications menu and apply workflow | E6 |
+| 27 | Duplicate protection (Full), then the three events | M4, M2 |
+| 28 | Run all test scenarios, update the README, and tag `sprint-2` | — |
+
+**Requirements:** D1–D4, EV1 (practice) · M3, E4, E6, M2 (Minimum) · M4 (Full) · C1 (optional challenge, not graded) · **Test scenarios:** 1–7 (Minimum), 1–8 (Full)
+
+---
+
+# 📦 Sprint Deliverables
+
+* Delegate practice (`Func`, `Action`, `Predicate`, `Comparison`) with a short note
+* Event practice (`EV1`)
+* Job Application Tracker — complete (Search, Sort, Approval, Applications, Events)
+* README updated
+* Final commit tagged `sprint-2`
+
+---
+
+# ✅ Definition of Done
+
+* [ ] The four delegate types are used correctly, and the learner can say when to choose each
+* [ ] `DataStore<T>` stays generic and gains `Find` and `Sort` (sorting returns a sorted copy)
+* [ ] Company approval and list by status work
+* [ ] A candidate can apply only to an open job of an Approved company
+* [ ] A job with applications cannot be removed
+* [ ] The three events are raised and handled with clear notifications
+* [ ] Duplicate applications are rejected (Full level)
+* [ ] Sprint 1 behavior still works
+* [ ] Test scenarios 1–7 pass (1–8 for Full)
+
+---
+
+# 🎓 Expected Outcome
+
+By the end of Sprint 2, the learner can pass behavior through delegates and lambdas, build event-driven notifications, extend an existing codebase without breaking it, and enforce business rules in workflows.
+
+---
+
+# 📅 Sprint 3 — LINQ
+
+**Day 29–42 · Project: Sales Data Analytics Dashboard (Console)**
 
 ## 🎯 Sprint Goal
 
@@ -341,61 +441,61 @@ Build a console dashboard that answers business questions about sales data using
 
 ### Task 1 — Execution Concepts
 
-*Day 15.* Demonstrate deferred vs immediate execution, multiple enumeration, and closures.
+*Day 29.* Demonstrate deferred vs immediate execution, multiple enumeration, and closures.
 
 ---
 
 ### Task 2 — Filtering & Quantifiers
 
-*Day 16.* Practice Where, OfType, Any, All, and Contains.
+*Day 30.* Practice Where, OfType, Any, All, and Contains.
 
 ---
 
 ### Task 3 — Projection & Ordering
 
-*Day 17–18.* Practice Select, SelectMany, projection into records/DTOs, and ordering.
+*Day 31–32.* Practice Select, SelectMany, projection into records/DTOs, and ordering.
 
 ---
 
 ### Task 4 — Element, Conversion & Paging
 
-*Day 19.* Practice element operators, conversion operators, Skip, and Take.
+*Day 33.* Practice element operators, conversion operators, Skip, and Take.
 
 ---
 
 ### Task 5 — Grouping
 
-*Day 20–21.* Practice GroupBy with composite keys, per-group aggregates, and ToLookup.
+*Day 34–35.* Practice GroupBy with composite keys, per-group aggregates, and ToLookup.
 
 ---
 
 ### Task 6 — Joining
 
-*Day 22–23.* Practice Join, GroupJoin, and left join.
+*Day 36–37.* Practice Join, GroupJoin, and left join.
 
 ---
 
 ### Task 7 — Aggregation & Set Operations
 
-*Day 24.* Practice Sum, Count, Average, Min, Max, MinBy, MaxBy, Aggregate, Distinct, DistinctBy, Union, Intersect, Except, and Concat.
+*Day 38.* Practice Sum, Count, Average, Min, Max, MinBy, MaxBy, Aggregate, Distinct, DistinctBy, Union, Intersect, Except, and Concat.
 
 ---
 
 ### Task 8 — Custom LINQ & Pitfalls
 
-*Day 25.* Write extension methods on `IEnumerable<T>`, use `yield return`, compare `Func` with `Expression<Func>`, and review common LINQ pitfalls and performance decisions.
+*Day 39.* Write extension methods on `IEnumerable<T>`, use `yield return`, compare `Func` with `Expression<Func>`, and review common LINQ pitfalls and performance decisions.
 
 ---
 
 ### Task 9 — Sprint Project
 
-*Day 26–27.* Finish and polish the Sales Data Analytics Dashboard.
+*Day 40–41.* Finish and polish the Sales Data Analytics Dashboard.
 
 ---
 
 ### Task 10 — README
 
-*Day 28.* Document the project: overview, features, how to run, the reports and their LINQ operators, sample output, design decisions, and known limitations.
+*Day 42.* Document the project: overview, features, how to run, the reports and their LINQ operators, sample output, design decisions, and known limitations.
 
 ---
 
@@ -422,13 +522,13 @@ Build a console dashboard that answers business questions about sales data using
 
 # 🎓 Expected Outcome
 
-By the end of Sprint 2, the learner can express almost any in-memory data question as a clear LINQ query and understands how that query executes.
+By the end of Sprint 3, the learner can express almost any in-memory data question as a clear LINQ query and understands how that query executes.
 
 ---
 
-# 📅 Sprint 3 — Entity Framework Core
+# 📅 Sprint 4 — Entity Framework Core
 
-**Day 29–42 · Project: Library Management System (EF Core)**
+**Day 43–56 · Project: Library Management System (EF Core)**
 
 ## 🎯 Sprint Goal
 
@@ -570,73 +670,73 @@ Build the Library Management System with a real database:
 
 ### Task 1 — Setup
 
-*Day 29.* Create the DbContext and entities, and manage the schema with migrations.
+*Day 43.* Create the DbContext and entities, and manage the schema with migrations.
 
 ---
 
 ### Task 2 — CRUD & Seeding
 
-*Day 30.* Implement CRUD operations and seed data.
+*Day 44.* Implement CRUD operations and seed data.
 
 ---
 
 ### Task 3 — Modeling
 
-*Day 31–32.* Model One-to-Many, Many-to-Many, and One-to-One relationships, configure the Fluent API, map enums, and use owned entities.
+*Day 45–46.* Model One-to-Many, Many-to-Many, and One-to-One relationships, configure the Fluent API, map enums, and use owned entities.
 
 ---
 
 ### Task 4 — LINQ to Entities
 
-*Day 33.* Write queries with IQueryable, project into DTOs, and review how each query becomes SQL.
+*Day 47.* Write queries with IQueryable, project into DTOs, and review how each query becomes SQL.
 
 ---
 
 ### Task 5 — Loading Strategies
 
-*Day 34.* Use Include / ThenInclude, reproduce and fix the N+1 problem, and compare split and single queries.
+*Day 48.* Use Include / ThenInclude, reproduce and fix the N+1 problem, and compare split and single queries.
 
 ---
 
 ### Task 6 — Change Tracking
 
-*Day 35.* Inspect entity states, use AsNoTracking, and update entities with Attach / Update.
+*Day 49.* Inspect entity states, use AsNoTracking, and update entities with Attach / Update.
 
 ---
 
 ### Task 7 — Raw SQL & Bulk Operations
 
-*Day 36.* Run raw SQL and bulk updates and deletes.
+*Day 50.* Run raw SQL and bulk updates and deletes.
 
 ---
 
 ### Task 8 — Concurrency & Transactions
 
-*Day 37.* Add optimistic concurrency and use explicit transactions with Commit / Rollback.
+*Day 51.* Add optimistic concurrency and use explicit transactions with Commit / Rollback.
 
 ---
 
 ### Task 9 — Global Query Filters
 
-*Day 38.* Implement soft delete with a global query filter.
+*Day 52.* Implement soft delete with a global query filter.
 
 ---
 
 ### Task 10 — Performance Review
 
-*Day 39.* Review the project's queries, read the SQL, and fix inefficient queries.
+*Day 53.* Review the project's queries, read the SQL, and fix inefficient queries.
 
 ---
 
 ### Task 11 — Sprint Project
 
-*Day 40–41.* Finish the Library Management System.
+*Day 54–55.* Finish the Library Management System.
 
 ---
 
 ### Task 12 — README
 
-*Day 42.* Document the project: overview, features, database setup and migrations, data model, how to run, the queries, sample output, design decisions, and known limitations.
+*Day 56.* Document the project: overview, features, database setup and migrations, data model, how to run, the queries, sample output, design decisions, and known limitations.
 
 ---
 
@@ -671,570 +771,388 @@ Build the Library Management System with a real database:
 
 # 🎓 Expected Outcome
 
-By the end of Sprint 3, the learner can design a database model with EF Core, write efficient queries, and explain what happens between a LINQ query and the SQL that runs.
+By the end of Sprint 4, the learner can design a database model with EF Core, write efficient queries, and explain what happens between a LINQ query and the SQL that runs.
 
 ---
 
-# 🏋️ Gym Management API — Overview (Sprints 4–6)
+---
 
-The Web API is built over **three sprints of 14 days each**. Every sprint adds a part of the same project, so the API grows step by step.
+# 🏛️ Library Management API — Overview (Sprints 5–6)
+
+The Web API is built over **two sprints of 15 days each**. Sprint 6 improves the same solution built in Sprint 5; it is not a new project.
 
 ### Domain
 
-* **Plan** (membership plan: name, price, duration in days, active flag)
-* **Trainer** (with owned Address and a specialty enum)
-* **Category** (session category)
-* **Member** (with owned Address, One-to-One **HealthRecord**)
-* **Session** (category, trainer, capacity, start and end date)
-* **MemberShip** (member + plan + start/end date, status computed from the end date)
-* **MemberSession** (booking — Many-to-Many between Member and Session)
+* **Author** (name, bio) — one author has many books
+* **Book** (title, ISBN, published year, `IsAvailable` controlled by the server, author)
+* **Member** (full name, unique email, optional phone, `JoinedAt` set by the server)
+* **Loan** *(Sprint 6)* (book + member, loan date, due date = loan date + 14 days, return date; an active loan has no return date)
 
 ### Architecture
 
-* 3 layers: **DAL** (entities, DbContext, configurations, repositories) · **BLL** (services, DTOs, AutoMapper profiles) · **PL** (controllers, Program.cs)
-* **Provided to the learner:** Generic Repository, Unit of Work, and the seed files (`plans.json`, `categories.json`)
+* **N-Tier**, three projects created all at once at the start of Sprint 5: **`LibraryApi.API`** (thin controllers, exception middleware, `Program.cs`) → **`LibraryApi.Business`** (services, DTOs, custom exceptions) → **`LibraryApi.Data`** (entities, `DbContext`, migrations, repositories, Unit of Work)
+* Dependencies go one way only: `API → Business → Data`
+* A controller calls **one service**. Only services use repositories / the Unit of Work. Services return **DTOs**, never entities
+* The Business layer never imports EF Core: everything goes through repository methods
+* The learner **writes** the Generic Repository (Sprint 5) and the Unit of Work (Sprint 6); the sprints describe *what* to build and which rules to follow, not the code
 
-### All Endpoints (23)
+### All Endpoints (12)
 
-| Sprint | Controller    | Endpoints                                                                                  |
-| ------ | ------------- | ------------------------------------------------------------------------------------------ |
-| 4      | Plan          | `GET /api/Plan` · `GET /api/Plan/{id}` · `PUT /api/Plan/{id}`                              |
-| 4      | Trainer       | `GET` · `GET /{id}` · `POST` · `PUT /{id}` · `DELETE /{id}`                                |
-| 5      | Member        | `GET` · `GET /{id}` · `POST` (with HealthRecord) · `DELETE /{id}`                          |
-| 5      | Session       | `GET` · `GET /{id}` · `POST` · `DELETE /{id}`                                              |
-| 6      | MemberShip    | `GET` · `POST` · `DELETE /{memberId}/{planId}`                                             |
-| 6      | MemberSession | `GET` (upcoming sessions) · `GET /Upcoming/{sessionId}/Members` · `POST` · `DELETE /{memberId}/{sessionId}` |
+| Sprint | Controller | Endpoints                                                                                       |
+| ------ | ---------- | ----------------------------------------------------------------------------------------------- |
+| 5      | Authors    | `GET /api/authors` (with `booksCount`) · `POST /api/authors` · `DELETE /api/authors/{id}`        |
+| 5      | Books      | `GET /api/books` · `POST /api/books` · `PUT /api/books/{id}`                                     |
+| 5      | Members    | `GET /api/members` · `GET /api/members/{id}` · `POST /api/members`                               |
+| 6      | Loans      | `POST /api/loans` (borrow) · `PUT /api/loans/{id}/return` · `GET /api/members/{id}/loans` (lives in `LoansController`) |
 
-> Out of scope for Level 1: authentication and roles, file upload, attendance, reporting endpoints.
+> The other CRUD endpoints (for example `GET /api/books/{id}`, `DELETE` for books and members, `GET /api/loans`) are intentionally out of scope. Do not implement extra endpoints unless the instructor asks for them.
+
+### Status Code Rules
+
+* An id in the **URL** that does not exist → `404`
+* An id in the **body** that does not exist → `400`
+* A conflict with the current state of the data (duplicate ISBN or email, deleting an author with books, borrowing an unavailable book, returning a loan twice) → `409`
+* Unexpected errors → `500` with a generic message and no stack trace
 
 ---
 
-# 📅 Sprint 4 — Web API Foundations: Plans & Trainers
+# 📅 Sprint 5 — Web API: Foundations, Services & Business Logic
 
-**Day 43–56 · Project: Gym Management API — Part 1**
+**Day 57–71 · Project: Library Management API — Part 1**
 
 ## 🎯 Sprint Goal
 
-Understand how a Web API works end to end (HTTP, routing, middleware, dependency injection), build the full data layer for the Gym domain, and deliver the first two controllers: **Plan** and **Trainer**.
+Build the foundation of a layered Web API: a three-project solution, the entities and database (Code First), a Generic Repository, DTOs, custom exceptions with a global exception middleware, and one service per entity that owns its business rules.
 
 ---
 
 # 📚 What You Will Learn
 
-## 1. HTTP, REST & Routing
+## 1. Solution Setup & N-Tier Architecture
 
 Learn:
 
-* HTTP methods
-* Status codes
-* REST conventions
-* Attribute routing and route constraints (`{id:int}`)
-* Swagger (default setup)
+* Solution vs project, project references
+* What a tier (layer) is and why we separate them
+* Swagger / OpenAPI
 
 ---
 
-# 2. Middleware & Program.cs
+# 2. Data Layer
 
 Learn:
 
-* Middleware pipeline basics
-* How a request moves from HTTP to the controller and back
-* Program.cs structure
+* Entities and relationships with EF Core Code First
+* `BaseEntity` and one-to-many relationships
+* Fluent API vs Data Annotations
+* Connection strings and Dependency Injection (scoped lifetime)
+* Migrations when the `DbContext` lives in a different project (`--project` / `--startup-project`)
 
 ---
 
-# 3. Solution Structure & Dependency Injection
+# 3. Generic Repository
 
 Learn:
 
-* 3-layer solution: DAL, BLL, PL
-* Dependency Injection
-* Lifetimes (Transient, Scoped, Singleton)
-* Registering services and repositories
+* The Repository pattern
+* Generic constraints (`where T : BaseEntity`)
+* `Expression<Func<T, object>>` and `Include`
 
 ---
 
-# 4. Repository & Unit of Work (provided)
+# 4. Controllers, DTOs & Validation
 
 Learn:
 
-* Why we use a Generic Repository and a Unit of Work
-* Reading and using `GetRepository<T>()` and `SaveChanges()`
+* Controllers and `[ApiController]`
+* DTOs instead of exposing entities
+* Validation attributes and automatic `400` responses
+* HTTP status codes (`200`, `201`, `204`, `400`, `404`, `409`, `500`)
+* `CreatedAtAction`, `PUT` with `204`, and over-posting
 
 ---
 
-# 5. Data Layer
+# 5. Exceptions & Middleware
 
 Learn:
 
-* Entities and DbContext in a Web API
-* Fluent API with `IEntityTypeConfiguration`
-* Check constraints and unique indexes
-* Migrations
-* Seeding from JSON files
+* The ASP.NET Core middleware pipeline and its order
+* Custom exceptions (`NotFoundException`, `BadRequestException`, `ConflictException`)
+* A global exception middleware with one consistent JSON error format
 
 ---
 
-# 6. Controllers, DTOs & Mapping
+# 6. Business Logic in Services
 
 Learn:
 
-* `[ApiController]` and controllers
-* Action results (Ok, NotFound, BadRequest, CreatedAtAction, NoContent)
-* DTOs
-* AutoMapper profiles
-
----
-
-# 7. Validation
-
-Learn:
-
-* Data Annotations
-* Automatic 400 responses with `[ApiController]`
-* Returning the correct status codes
+* Business rules in services, not in controllers or repositories
+* `404` vs `409` vs `400`
+* Uniqueness checks that exclude the record itself on update
+* String normalization (trim / lowercase) and server-controlled fields
+* Thin controllers and DI extension methods
 
 ---
 
 # 🛠️ Practical Implementation
 
-## Gym Management API — Part 1
+## Library Management API — Part 1
 
-### Data Layer (all entities)
+### Entities
 
-Create all seven entities, the DbContext, the Fluent API configurations, the first migration, and the seed data. The relationships are used in the next sprints.
+`BaseEntity`, `Author`, `Book`, `Member`, `AppDbContext`, unique indexes on `ISBN` and `Email`, and the first migration (in the Data project).
 
----
+### Author Endpoints
 
-### Plan Endpoints
+* `GET /api/authors` — list authors with `booksCount`
+* `POST /api/authors` — create an author
+* `DELETE /api/authors/{id}` — delete an author only if they have no books (`404`, `409`)
 
-* `GET /api/Plan` — list all plans
-* `GET /api/Plan/{id}` — plan details (400 for invalid id, 404 if not found)
-* `PUT /api/Plan/{id}` — update a plan
+### Book Endpoints
 
----
-
-### Trainer Endpoints
-
-* `GET /api/Trainer` — list all trainers
-* `GET /api/Trainer/{id}` — trainer details
-* `POST /api/Trainer` — create a trainer
-* `PUT /api/Trainer/{id}` — update a trainer
-* `DELETE /api/Trainer/{id}` — delete a trainer
-
----
-
-### Simple Rules (plain checks in the service)
-
-* A plan that has an active membership cannot be updated
-* Trainer email and phone must be unique
-* A trainer who has upcoming sessions cannot be deleted
-* Phone must be a valid Egyptian number and email must be valid (Data Annotations)
-
----
-
-# 📝 Sprint Tasks
-
-### Task 1 — HTTP, REST & Routing
-
-*Day 43–44.* Create the Web API project, practice HTTP methods, status codes, attribute routing, and Swagger.
-
----
-
-### Task 2 — Middleware, Structure & Dependency Injection
-
-*Day 45–46.* Learn the middleware pipeline, organize the solution into DAL / BLL / PL, register services with the right lifetimes, and read the provided Repository and Unit of Work.
-
----
-
-### Task 3 — Data Layer
-
-*Day 47–49.* Create the entities and DbContext, configure them with the Fluent API, add the first migration, and seed Plans and Categories from JSON.
-
----
-
-### Task 4 — DTOs, AutoMapper & Validation
-
-*Day 50–51.* Create the DTOs and AutoMapper profiles, and add Data Annotations validation.
-
----
-
-### Task 5 — Plan Endpoints
-
-*Day 52.* Build the Plan controller and service.
-
----
-
-### Task 6 — Trainer Endpoints
-
-*Day 53–54.* Build the Trainer controller and service with the simple rules.
-
----
-
-### Task 7 — Test & Review
-
-*Day 55.* Test every endpoint with Swagger and fix bugs.
-
----
-
-### Task 8 — README
-
-*Day 56.* Document the project: overview, architecture, how to run, the endpoint map, concepts explained, and known limitations.
-
----
-
-# 📦 Sprint Deliverables
-
-* 3-layer solution (DAL / BLL / PL)
-* DbContext, Fluent API configurations, migration, and seed data
-* Plan and Trainer endpoints (8)
-* DTOs, AutoMapper profiles, and validation
-* Swagger documentation
-* README
-
----
-
-# ✅ Definition of Done
-
-* [ ] HTTP methods, status codes, and routing are understood
-* [ ] Middleware pipeline and DI lifetimes are understood
-* [ ] Migration and seeding work
-* [ ] Plan endpoints work
-* [ ] Trainer endpoints work
-* [ ] Simple rules are enforced
-* [ ] Validation returns the correct status codes
-* [ ] Swagger is available
-
----
-
-# 🎓 Expected Outcome
-
-By the end of Sprint 4, the learner can build a layered Web API with a database, and explain how a request moves from HTTP to the database and back.
-
----
-
-# 📅 Sprint 5 — Web API: Members & Sessions
-
-**Day 57–70 · Project: Gym Management API — Part 2**
-
-## 🎯 Sprint Goal
-
-Work with related data in the API: One-to-One and One-to-Many relationships, eager loading, computed fields, and business rules that depend on other tables.
-
----
-
-# 📚 What You Will Learn
-
-## 1. Relationships in the API
-
-Learn:
-
-* One-to-One (Member and HealthRecord)
-* One-to-Many (Trainer → Sessions, Category → Sessions)
-* Owned entity (Address)
-* Navigation properties
-
----
-
-# 2. Loading Related Data
-
-Learn:
-
-* Eager loading with `Include`
-* Mapping related data into DTOs
-* Computed fields (available slots, session status)
-
----
-
-# 3. Nested DTOs & Validation
-
-Learn:
-
-* Nested DTOs (Member with HealthRecord)
-* Validation of nested objects
-* Date and range validation
-
----
-
-# 4. Business Rules in Services
-
-Learn:
-
-* Checking that related records exist before saving
-* Rules that depend on dates
-* Choosing between 400 BadRequest and 404 NotFound
-
----
-
-# 🛠️ Practical Implementation
-
-## Gym Management API — Part 2
+* `GET /api/books` — list books with the author name
+* `POST /api/books` — create a book (author must exist, ISBN must be unique)
+* `PUT /api/books/{id}` — update a book (client can never change `IsAvailable`)
 
 ### Member Endpoints
 
-* `GET /api/Member` — list all members
-* `GET /api/Member/{id}` — member details with the active plan name and membership dates (if any)
-* `POST /api/Member` — create a member together with the HealthRecord
-* `DELETE /api/Member/{id}` — delete a member
+* `GET /api/members` — list members
+* `GET /api/members/{id}` — get one member
+* `POST /api/members` — create a member (email normalized and unique, `JoinedAt` set by the server)
 
----
+### Simple Rules (plain checks in the services)
 
-### Session Endpoints
-
-* `GET /api/Session` — list sessions with category name, trainer name, and available slots
-* `GET /api/Session/{id}` — session details
-* `POST /api/Session` — create a session
-* `DELETE /api/Session/{id}` — delete a session
-
----
-
-### Simple Rules (plain checks in the service)
-
-* Member email and phone must be unique
-* A member with upcoming booked sessions cannot be deleted (deleting a member also removes their memberships)
-* A session needs an existing trainer and an existing category
-* A session end date must be after its start date
-* Session capacity must be between 1 and 25
-* A session can be deleted only if it is completed and has no bookings
-* Available slots = capacity − number of bookings
+* Invalid DTO → `400`
+* A missing URL id → `404`; a missing `AuthorId` in the body → `400`
+* A duplicate ISBN or email (excluding the record itself on update) → `409`
+* An author with books cannot be deleted → `409`
+* Text input is trimmed; emails are stored trimmed and lowercase
+* The server controls `IsAvailable` and `JoinedAt`
 
 ---
 
 # 📝 Sprint Tasks
 
-### Task 1 — Relationships & Loading
+| Day | Focus | You finish the day with |
+| --- | ----- | ----------------------- |
+| 57 | Solution setup | Three projects, references, packages, Swagger |
+| 58 | Entities and relationships | `BaseEntity`, `Author`, `Book`, `Member`, `AppDbContext` |
+| 59 | Database setup | Connection string, DI registration, migration applied |
+| 60 | Generic Repository | `IGenericRepository<T>` and `GenericRepository<T>` |
+| 61 | **First working slice: Authors** | DTOs with validation, a minimal `AuthorService`, `GET` and `POST /api/authors` in Swagger |
+| 62 | Exceptions and middleware | Custom exceptions, global middleware, consistent error format |
+| 63 | Author delete with business rule | `DELETE /api/authors/{id}` with `404` and `409` |
+| 64 | Book service: reads and create | List books, create book, author and ISBN checks |
+| 65 | Book update | Update a book without letting the client change `IsAvailable` |
+| 66 | Member service and endpoints | List members, get member by id, create member |
+| 67 | Controllers and DI review | Thin controllers and correct service registrations |
+| 68 | Validation tests | Run the essential test scenarios in Swagger |
+| 69 | Fixes and regression | Fix failed tests and verify database constraints |
+| 70 | Architecture review | Check references, no business logic in controllers, clean code |
+| 71 | Wrap-up | Short README, Definition of Done, buffer time |
 
-*Day 57–58.* Review the relationships between Member, HealthRecord, Trainer, Category, and Session, and practice `Include` to load related data into DTOs.
-
----
-
-### Task 2 — Member Endpoints
-
-*Day 59–63.* Build the Member controller and service: nested DTO with HealthRecord, unique checks, member details with the active membership, and delete rules.
-
----
-
-### Task 3 — Session Endpoints
-
-*Day 64–68.* Build the Session controller and service: related-data checks, date and capacity validation, available slots, and delete rules.
-
----
-
-### Task 4 — Test & Review
-
-*Day 69.* Test every endpoint with Swagger and fix bugs.
-
----
-
-### Task 5 — README
-
-*Day 70.* Update the README: relationships, the extended endpoint map, business rules, and how to run.
+> Spend the first 1–2 hours of each day on the study topics, then code. Day 59 (migrations across two projects) often takes longer than planned; use the buffer days at the end (69–71) if needed.
 
 ---
 
 # 📦 Sprint Deliverables
 
-* Member endpoints (4)
-* Session endpoints (4)
-* Nested DTOs and validation
-* Business rules enforced
-* README
+* Three-project solution (`LibraryApi.API`, `LibraryApi.Business`, `LibraryApi.Data`)
+* Entities, `AppDbContext`, and migrations (in the Data project)
+* Generic Repository
+* One service per entity (`AuthorService`, `BookService`, `MemberService`) with interfaces
+* DTOs, custom exceptions, and the global exception middleware
+* 9 working endpoints tested in Swagger
+* README (how to run, connection string, migrations, known limitations)
 
 ---
 
 # ✅ Definition of Done
 
-* [ ] One-to-One and One-to-Many relationships work in the API
-* [ ] `Include` is used to load related data
-* [ ] A member is created together with its HealthRecord
-* [ ] Member endpoints work
-* [ ] Session endpoints work
-* [ ] Available slots and session status are computed correctly
-* [ ] All simple rules are enforced
-* [ ] Validation returns the correct status codes
+* [ ] The solution has three projects and the references are exactly `API → Business → Data`
+* [ ] Every entity has its own service with an interface
+* [ ] Controllers depend only on a service interface and contain no business rules
+* [ ] DTOs live in the Business project, and no entity is returned from or accepted by any endpoint
+* [ ] No file in `LibraryApi.Business` imports `Microsoft.EntityFrameworkCore`
+* [ ] All 9 required endpoints work and were tested in Swagger
+* [ ] Every row of the test scenarios table gives the expected status code
+* [ ] The exception middleware is registered first, and every error uses the same JSON format
+* [ ] Unique indexes exist for `ISBN` and `Email`
+* [ ] Known limitations are written in the README
 
 ---
 
 # 🎓 Expected Outcome
 
-By the end of Sprint 5, the learner can build endpoints that work with related data and enforce business rules that depend on other tables and on dates.
+By the end of Sprint 5, the learner can build a layered Web API with a database, put business rules in services, and explain how a request moves from HTTP to the database and back.
 
 ---
 
-# 📅 Sprint 6 — Web API: Memberships & Bookings
+# 📅 Sprint 6 — Web API: Unit of Work & Loans
 
-**Day 71–84 · Project: Gym Management API — Part 3**
+**Day 72–86 · Project: Library Management API — Part 2**
 
 ## 🎯 Sprint Goal
 
-Finish the API with the endpoints that connect everything: memberships and class bookings. This sprint is about Many-to-Many relationships and time-based business rules.
+Improve the same solution: refactor the data layer to the **Unit of Work** pattern, then add the **Loan** feature (borrow, return, and member loan history) with business rules that combine several entities.
 
 ---
 
 # 📚 What You Will Learn
 
-## 1. Many-to-Many with Extra Data
+## 1. Unit of Work
 
 Learn:
 
-* Join entities (MemberShip: Member + Plan, MemberSession: Member + Session)
-* Composite keys
-* Extra columns on the join entity (start/end date, booking date)
+* The problem caused by saving inside each repository
+* The Unit of Work pattern on top of the Generic Repository
+* Why an operation that changes several records must be saved **once**
+* Who owns the lifetime of the `DbContext` (the DI container)
+* Refactoring working code safely, in small steps
 
 ---
 
-# 2. Time-Based Business Rules
+# 2. Loan Feature
 
 Learn:
 
-* Active vs expired memberships (end date vs now)
-* Upcoming sessions
-* Capacity checks
+* A new entity with two relationships and `Restrict` delete behavior
+* A new service (`LoanService`) with its own business rules
+* Combining rules from several entities in one service
+* The order of business checks
+* State-based conflicts (`409`) and the URL-id vs body-id rule
 
 ---
 
-# 3. Multi-Rule Validation in Services
+# 3. Routing & Controllers
 
 Learn:
 
-* Checking several rules in the right order
-* Returning the correct status code for each failure
+* Absolute routes (`[HttpGet("/api/...")]`)
+* Why `GET /api/members/{id}/loans` lives in `LoansController` (one controller = one service)
 
 ---
 
-# 4. Testing & Documentation
+# 4. Edge-Case Testing & Review
 
 Learn:
 
-* Testing the full API with Swagger
-* Writing a README for an API
+* Designing edge-case tests (a member with exactly 3 active loans, borrowing an unavailable book, returning a loan twice)
+* Reviewing transaction boundaries and layer boundaries
 
 ---
 
 # 🛠️ Practical Implementation
 
-## Gym Management API — Part 3
+## Library Management API — Part 2
 
-### MemberShip Endpoints
+### Part A — Refactor to Unit of Work
 
-* `GET /api/MemberShip` — list memberships with member name, plan name, start date, end date, and status (Active / Expired)
-* `POST /api/MemberShip` — subscribe a member to a plan
-* `DELETE /api/MemberShip/{memberId}/{planId}` — cancel an active membership
+* Repositories only track changes; they no longer call `SaveChangesAsync`
+* Add `IUnitOfWork` / `UnitOfWork` and register it in DI
+* Switch the services to the Unit of Work; **controllers do not change**
+* Run the Sprint 5 tests again as a regression check
 
----
+### Part B — The Loan Feature
 
-### MemberSession (Booking) Endpoints
+* `GET /api/members/{id}/loans` — list one member's loans (`404` if the member does not exist)
+* `POST /api/loans` — borrow a book (`201`; `400` for a missing book or member in the body; `409` if the book is unavailable or the member already has 3 active loans)
+* `PUT /api/loans/{id}/return` — return a book (`204`; `404`; `409` if already returned)
 
-* `GET /api/MemberSession` — list upcoming sessions with available slots
-* `GET /api/MemberSession/Upcoming/{sessionId}/Members` — members booked in an upcoming session, with booking date
-* `POST /api/MemberSession` — book a session for a member
-* `DELETE /api/MemberSession/{memberId}/{sessionId}` — cancel a booking
+### Simple Rules (plain checks in `LoanService`)
 
----
-
-### Simple Rules (plain checks in the service)
-
-**MemberShip**
-
-* The member and the plan must exist
-* The plan must be active
-* A member cannot have two active memberships at the same time
-* End date = start date + plan duration in days
-* Only an active (not expired) membership can be cancelled
-
-**Booking**
-
-* The member and the session must exist
-* The session must be upcoming
-* The member must have an active membership
-* A member cannot book the same session twice
-* A session cannot exceed its capacity
-* A booking can be cancelled only before the session starts
+* The book and the member (ids in the body) must exist
+* The book must be available
+* A member can have at most 3 active loans
+* `DueDate` = `LoanDate` + 14 days
+* Borrow and return each call `SaveChangesAsync()` **once**
+* A loan cannot be returned twice
 
 ---
 
 # 📝 Sprint Tasks
 
-### Task 1 — Many-to-Many & Time-Based Rules
+| Day | Focus | You finish the day with |
+| --- | ----- | ----------------------- |
+| 72 | Baseline and the problem | `sprint-2` branch, Sprint 5 tests pass, the "two saves" experiment done and deleted |
+| 73 | Repository and Unit of Work | Repositories track changes only, `CountAsync` added, `IUnitOfWork` registered in DI |
+| 74 | Switch services and regression | Services use the Unit of Work, all Sprint 5 tests pass again |
+| 75 | Loan entity and migration | `Loan`, relationships (Restrict), `AddLoanTable` migration, Loan DTOs |
+| 76 | Loan read by member | `GetByMemberAsync` and `GET /api/members/{id}/loans` logic |
+| 77 | Borrow flow | `BorrowAsync` with availability, member limit, dates, and one save |
+| 78 | Return flow | `ReturnAsync` with one save and duplicate-return protection |
+| 79 | Loan controller | The three required loan endpoints |
+| 80 | Borrow/return tests | Successful borrow/return and important failure cases |
+| 81 | Unit of Work review | Each service saves at the correct point; the "one save only" test |
+| 82 | Error handling and fixes | Fix failing tests and verify error responses |
+| 83 | *Recommended extension:* concurrency, part 1 | `RowVersion` on `Book`, migration, a reproduced double-borrow problem |
+| 84 | *Recommended extension:* concurrency, part 2 | Middleware returns `409` for `DbUpdateConcurrencyException` and unique-index errors |
+| 85 | Architecture and code review | Remove unused methods and check layer boundaries |
+| 86 | Final Review & Project Presentation | Final README, Definition of Done, and buffer time |
 
-*Day 71–72.* Review the join entities and composite keys, and practice date-based checks (active vs expired, upcoming).
-
----
-
-### Task 2 — MemberShip Endpoints
-
-*Day 73–76.* Build the MemberShip controller and service with all membership rules.
-
----
-
-### Task 3 — Booking Endpoints
-
-*Day 77–81.* Build the MemberSession controller and service with all booking rules.
-
----
-
-### Task 4 — Final Testing
-
-*Day 82–83.* Test the full API with Swagger and fix bugs.
-
----
-
-### Task 5 — README
-
-*Day 84.* Write the final README: overview, architecture, data model, business rules, endpoint map, how to run, the end-to-end flow, and known limitations.
+> Part A is a small refactor, so it fits in Days 72–74. Days 83–84 are for the optional **Concurrency** extension; if you skip it, use those two days as buffer for the required work.
 
 ---
 
 # 📦 Sprint Deliverables
 
-* MemberShip endpoints (3)
-* Booking endpoints (4)
-* All business rules enforced
-* Complete Gym Management API (23 endpoints)
-* Swagger documentation
-* README
+* Unit of Work (`IUnitOfWork` / `UnitOfWork`) and refactored services
+* `Loan` entity, relationships, and the `AddLoanTable` migration
+* `LoanService` and `LoansController`
+* Loan endpoints (3), on top of the 9 endpoints from Sprint 5
+* Updated README (architecture, how to run, known limitations)
+* The `sprint-2` branch merged into `main`
 
 ---
 
 # ✅ Definition of Done
 
-* [ ] Many-to-Many with composite keys works
-* [ ] A member can subscribe to a plan and cancel the membership
-* [ ] A member cannot have two active memberships
-* [ ] A member can book and cancel a session
-* [ ] Booking rules (active membership, capacity, no duplicate) are enforced
-* [ ] All status codes are correct
-* [ ] Swagger is available
-* [ ] README is complete
+* [ ] Dependencies still go only `API → Business → Data`
+* [ ] No repository calls `SaveChangesAsync`; only services call it on the Unit of Work
+* [ ] No controller uses `IUnitOfWork`, `DbContext`, repositories, or entities
+* [ ] Every controller injects exactly one service, and `GET /api/members/{id}/loans` is in `LoansController`
+* [ ] All 9 Sprint 5 endpoints still work
+* [ ] Borrow and return each use **one** `SaveChangesAsync`
+* [ ] The borrow and return rules are implemented, and every required test row gives the expected status code
+* [ ] A missing URL id returns `404`, a missing body id returns `400`, and returning a loan twice returns `409`
+* [ ] README is updated and lists the known limitations
+
+---
+
+# 🎁 Optional Bonus Challenges
+
+For learners who finish the required work early. Bonus work is never required for the sprint to be complete.
+
+* **Concurrency** (recommended first bonus): `RowVersion` on `Book`, and a middleware that returns `409` instead of `500`
+* **Authentication with JWT:** ASP.NET Core Identity, register / login, `[Authorize]`, roles
+* **Other ideas:** AutoMapper, xUnit + Moq, overdue loans endpoint, late fees, lazy repositories in the Unit of Work, soft delete
 
 ---
 
 # 🎓 Expected Outcome
 
-By the end of Sprint 6, the learner can build a complete Web API backed by a database, enforce real business rules, and explain how a request moves from HTTP to the database and back.
+By the end of Sprint 6, the learner can build a complete Web API backed by a database, use the Unit of Work to save related changes as one operation, enforce real business rules across entities, and explain how a request moves from HTTP to the database and back.
 
 ---
 
 # 🏁 Final Level Completion
 
-A learner completes Level 1 when all six sprints are completed and the Gym Management API works:
+A learner completes Level 1 when all six sprints are completed and the Library Management API works:
 
 ```text
-Advanced C#
+Collections & Generics
+     ↓
+Delegates, Lambdas & Events
      ↓
 LINQ
      ↓
 EF Core
      ↓
-HTTP & Routing
+Web API Foundations, Services & Business Logic
      ↓
-Web API Foundations (Plans & Trainers)
+Unit of Work & Loans
      ↓
-Members & Sessions
-     ↓
-Memberships & Bookings
-     ↓
-Gym Management API
+Library Management API
 ```
 
 ---
@@ -1247,7 +1165,11 @@ At the end of Level 1, the learner must be able to explain:
 
 Why was each collection chosen?
 
+Why does a generic `GetById` need the `IEntity` constraint?
+
 How do delegates, lambdas, and events work?
+
+What is the difference between declaring and raising an event?
 
 ---
 
@@ -1277,27 +1199,33 @@ How does a request move from HTTP to the database and back?
 
 Why are different HTTP methods and status codes used?
 
+Why is an id in the URL a `404` but an id in the body a `400`?
+
 What is the difference between Transient, Scoped, and Singleton?
 
 ---
 
 ## 5. Architecture
 
-Why is the solution split into DAL, BLL, and PL?
+Why is the solution split into API, Business, and Data?
 
-What do the Repository and Unit of Work do?
+What do the Generic Repository and the Unit of Work do?
 
 Why are DTOs used instead of returning entities?
+
+Why does a controller call only one service?
 
 ---
 
 ## 6. Business Rules
 
-Where are the Gym API business rules enforced?
+Where are the Library API business rules enforced?
 
-What is the difference between validation (Data Annotations) and business rules?
+What is the difference between validation (DTO rules) and business rules?
 
-How are membership and booking rules checked?
+Why do borrow and return save only once?
+
+How are borrowing rules (availability, 3 active loans, no double return) checked?
 
 ---
 
@@ -1359,7 +1287,7 @@ The learner should avoid:
 
 ## 2. Reading the Generated SQL
 
-From Sprint 3 onward, the learner checks the SQL that EF Core generates for the queries they write.
+From Sprint 4 onward, the learner checks the SQL that EF Core generates for the queries they write.
 
 ---
 
@@ -1376,16 +1304,24 @@ Throughout the level, review:
 
 ---
 
+## 4. Git Discipline
+
+* Commit after every finished requirement, with the requirement ID in the message (Sprints 1–4)
+* Commit before every refactor step, and work on a branch for Sprint 6
+* Push every project to GitHub with a README
+
+---
+
 # 🚫 Explicitly Out of Scope
 
-The following are NOT part of Level 1:
+The following are NOT required in Level 1:
 
-* Authentication and authorization (JWT, Identity, roles)
+* Authentication and authorization (JWT, Identity, roles): optional bonus in Sprint 6 only
+* AutoMapper and unit testing frameworks (xUnit, Moq): optional bonus ideas only
 * File upload
-* Attendance and reporting endpoints
+* Reporting endpoints
 * Clean Architecture, CQRS, and MediatR
 * Caching and background processing
-* Unit and integration testing frameworks
 * Docker, CI/CD, and deployment
 * Microservices
 * Front-end

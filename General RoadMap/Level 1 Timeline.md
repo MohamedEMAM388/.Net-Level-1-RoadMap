@@ -5,7 +5,7 @@
 
 ⬇️
 
-### 🟦 Sprint 1 · Advanced C#
+### 🟦 Sprint 1 · Collections & Generics
 **Day 1 → Day 14**
 
 > 🚀 Day 1 — Kickoff  
@@ -14,7 +14,7 @@
 
 ⬇️
 
-### 🟩 Sprint 2 · LINQ
+### 🟩 Sprint 2 · Delegates, Lambdas & Events
 **Day 15 → Day 28**
 
 > 🚀 Day 15 — Kickoff  
@@ -23,7 +23,7 @@
 
 ⬇️
 
-### 🟨 Sprint 3 · Entity Framework Core
+### 🟨 Sprint 3 · LINQ
 **Day 29 → Day 42**
 
 > 🚀 Day 29 — Kickoff  
@@ -32,7 +32,7 @@
 
 ⬇️
 
-### 🟧 Sprint 4 · Web API Foundations — Plans & Trainers
+### 🟧 Sprint 4 · Entity Framework Core
 **Day 43 → Day 56**
 
 > 🚀 Day 43 — Kickoff  
@@ -41,18 +41,18 @@
 
 ⬇️
 
-### 🟥 Sprint 5 · Web API — Members & Sessions
-**Day 57 → Day 70**
+### 🟥 Sprint 5 · Web API — Foundations, Services & Business Logic
+**Day 57 → Day 71**
 
 > 🚀 Day 57 — Kickoff  
 > 🔄 Day 64 — Stand-up  
-> ✅ Day 70 — Sprint Review
+> ✅ Day 71 — Sprint Review
 
 ⬇️
 
-### 🟪 Sprint 6 · Web API — Memberships & Bookings
-**Day 71 → Day 84**
+### 🟪 Sprint 6 · Web API — Unit of Work & Loans
+**Day 72 → Day 86**
 
-> 🚀 Day 71 — Kickoff  
-> 🔄 Day 78 — Stand-up  
-> 🏁 Day 84 — Final Review & Project Presentation
+> 🚀 Day 72 — Kickoff  
+> 🔄 Day 79 — Stand-up  
+> 🏁 Day 86 — Final Review & Project Presentation
