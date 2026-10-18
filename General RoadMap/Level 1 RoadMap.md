@@ -511,3 +511,15 @@ Git discipline
 - Commit before each refactor step.
 - Use a branch for Sprint 6.
 - Push each project to GitHub with a README.
+🚫 Explicitly Out of Scope
+These topics are not required for Level 1:
+- Authentication and authorization (JWT, Identity, roles); optional bonus only
+- AutoMapper and unit-testing frameworks such as xUnit/Moq; optional bonus ideas only
+- File upload and reporting endpoints
+- Clean Architecture, CQRS, and MediatR
+- Caching and background processing
+- Docker, CI/CD, and deployment
+- Microservices and front-end development
+These topics belong to later levels.
+🏆 Final Principle
+One Level. Six Sprints. One Final Project. Real Business Rules. No Technology for Technology’s Sake.
