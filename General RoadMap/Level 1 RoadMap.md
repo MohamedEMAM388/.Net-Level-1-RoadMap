@@ -1,1367 +1,513 @@
-# Tawjeh Level 1 — Backend .NET Developer
+Tawjeh Level 1 — Backend .NET Developer Roadmap
+Duration: 6 sprints · 86 days
+Learning path: C# Foundations → LINQ → Database Design & SQL → EF Core → ASP.NET Core Web API → Project Defense & Mock Interview
+🎯 Level 1 Goal
+By the end of Level 1, learners should be able to design a relational database, build a working layered Web API on top of it, enforce business rules, test and debug their work, and explain their technical decisions in a final project defense and mock interview.
+Learning cycle: Learn → Practice → Build → Debug → Explain
+🗺️ Roadmap Overview
+Sprint	Focus	Days	Project
+1	Collections & Generics	1–14	Job Application Tracker — Part 1 (Console)
+2	Delegates, Lambdas & Events	15–28	Job Application Tracker — Part 2 (same project)
+3	LINQ	29–42	Sales Data Analytics Dashboard (Console)
+4	Database Design, SQL & EF Core	43–56	Library Management Database + EF Core
+5	Web API Foundations, Services & Business Logic	57–71	Library Management API — Part 1
+6	Unit of Work, Loans & Final Interview	72–86	Library Management API — Part 2 + Mock Interview
 
-# Sprint Specifications
 
-> **Final Project:** Library Management API
-> **Path:** C# Collections & Generics → Delegates & Events → LINQ → EF Core → ASP.NET Core Web API
-> **Duration:** 6 Sprints (4 × 14 days + 2 × 15 days · 86 days)
-
----
-
-# 🗺️ Roadmap Overview
-
-| Sprint | Focus                                      | Days                | Project                                                   |
-| ------ | ------------------------------------------ | ------------------- | --------------------------------------------------------- |
-| 1      | Collections & Generics                     | Day 1–14 (14 days)  | Job Application Tracker — Part 1: Data Foundation (Console) |
-| 2      | Delegates, Lambdas & Events                | Day 15–28 (14 days) | Job Application Tracker — Part 2: Workflows & Notifications (Console) |
-| 3      | LINQ                                       | Day 29–42 (14 days) | Sales Data Analytics Dashboard (Console)                  |
-| 4      | Entity Framework Core                      | Day 43–56 (14 days) | Library Management System (EF Core)                       |
-| 5      | Web API — Foundations, Services & Business Logic | Day 57–71 (15 days) | Library Management API — Part 1 (9 endpoints)       |
-| 6      | Web API — Unit of Work & Loans             | Day 72–86 (15 days) | Library Management API — Part 2 (+3 endpoints = 12)       |
-
-Total duration: **86 days** (Sprints 1–4 are 14 days each, Sprints 5–6 are 15 days each).
-
----
-
-# 🎯 Level 1 Goal
-
-The goal of Level 1 is to take the learner from solid C# fundamentals to building a working, layered Web API on top of a database.
-
-The learner should practice:
-
-```text
-Learn
-    ↓
-Practice
-    ↓
-Build
-    ↓
-Debug
-    ↓
-Explain
-```
-
-Every sprint ends with a project, and every project uses what the previous sprints taught.
-
-**How the projects connect:**
-
-* Sprints 1–2 build **one** console project (Job Application Tracker) across two sprints. Sprint 2 continues the exact repository of Sprint 1.
-* Sprint 3 is a separate in-memory project (no database).
-* Sprint 4 adds a real database with EF Core (Library Management System).
-* Sprints 5–6 build **one** Web API (Library Management API) across two sprints. Sprint 6 improves the same solution; it is not a new project.
-
-**Sprint structure:** Sprints 1 and 2 follow a fixed **9 days study & practice, then 5 days project** split. Sprints 3 and 4 are task-based with Easy / Medium / Hard requirements. Sprints 5 and 6 are day-by-day plans where every day ends with a buildable project and a small commit.
-
----
-
-# 📅 Sprint 1 — Collections & Generics
-
-**Day 1–14 · Project: Job Application Tracker — Part 1 of 2 (Console)**
-
-## 🎯 Sprint Goal
-
-Build a strong C# foundation: choose the right collection, write reusable generic code, and use both to build the **data foundation** of a console application.
-
-**Sprint rules:** no LINQ, no database, no Entity Framework. All data stays in memory.
-
----
-
-# 📚 What You Will Learn
-
-## 1. Collections
-
+🔗 How the Projects Connect
+- Sprints 1–2: Build one console project, the Job Application Tracker. Sprint 2 extends Sprint 1.
+- Sprint 3: Build a separate in-memory Sales Data Analytics Dashboard; no database is required.
+- Sprint 4: Design the Library Management database, practice SQL against it, then implement the same domain using EF Core.
+- Sprints 5–6: Continue the same Library Management domain as a Web API. Sprint 6 improves the solution from Sprint 5; it is not a new project.
+The goal is a gradual learning path: each sprint builds on the previous one instead of introducing unrelated projects and concepts.
+📅 Sprint 1 — Collections & Generics
+Day 1–14 · Project: Job Application Tracker — Part 1 of 2 (Console)
+🎯 Sprint Goal
+Build a strong C# foundation: choose the right collection, write reusable generic code, and use both to build the data foundation of a console application.
+Sprint rules: no LINQ, no database, no Entity Framework. All data stays in memory.
+📚 What You Will Learn
+1. Collections
 Learn:
-
-* `List<T>`
-* `Dictionary<TKey, TValue>`
-* `HashSet<T>`
-* `Queue<T>`
-* `Stack<T>`
-* How to choose the right collection (access pattern, uniqueness, ordering)
-
----
-
-# 2. Generics
-
+- List<T>
+- Dictionary<TKey, TValue>
+- HashSet<T>
+- Queue<T>
+- Stack<T>
+- How to choose the right collection (access pattern, uniqueness, ordering)
+2. Generics
 Learn:
+- Generic methods
+- Generic classes
+- Constraints (where)
+- Type parameters and type arguments
+🛠️ Practical Implementation
+Job Application Tracker — Part 1 (Console)
+Build the data foundation of a console job portal: store and manage companies, recruiters, jobs, and candidates through console menus, using:
+- A generic DataStore<T> with where T : class, IEntity
+- A Dictionary<int, Job> kept consistent next to the jobs store
+- A HashSet<string> to check candidate email uniqueness
+- Fixed seed data (3 companies, 3 recruiters, 6 jobs, 5 candidates)
+📝 Sprint Tasks
+Part 1 — Study & Practice (Day 1–9)
+Day	Focus	Requirements
+1–2	List<T>: add, remove, search, update	CL1
+3	Dictionary<TKey, TValue>	CL2
+4	HashSet<T>	CL3
+5	Queue<T> and Stack<T>	CL4
+6	Collections review and the required note	CL1–CL4
+7	Generic methods	G1
+8	Generic classes	G2
+9	Constraints, IEntity, and the generics explanation	G1–G2
 
-* Generic methods
-* Generic classes
-* Constraints (`where`)
-* Type parameters and type arguments
 
----
+Part 2 — Build the Project (Day 10–14)
+Day	Focus	Requirements
+10	Models, seed data, and console menus	E1, E2
+11	Generic DataStore<T>	M1
+12	Basic operations for companies, recruiters, and candidates	E3
+13	Job operations and the Dictionary lookup	E3, E5
+14	Run all test scenarios, write the README, and tag sprint-1	Hand-off
 
-# 🛠️ Practical Implementation
 
-## Job Application Tracker — Part 1 (Console)
-
-Build the data foundation of a console job portal: store and manage **companies, recruiters, jobs, and candidates** through console menus, using:
-
-* A generic `DataStore<T>` with `where T : class, IEntity`
-* A `Dictionary<int, Job>` kept consistent next to the jobs store
-* A `HashSet<string>` to check candidate email uniqueness
-* Fixed seed data (3 companies, 3 recruiters, 6 jobs, 5 candidates)
-
----
-
-# 📝 Sprint Tasks
-
-### Part 1 — Study & Practice (Day 1–9)
-
-| Day | Focus | Requirements |
-| --- | ----- | ------------ |
-| 1–2 | `List<T>`: add, remove, search, update | CL1 |
-| 3   | `Dictionary<TKey, TValue>` | CL2 |
-| 4   | `HashSet<T>` | CL3 |
-| 5   | `Queue<T>` and `Stack<T>` | CL4 |
-| 6   | Collections review and the required note | CL1–CL4 |
-| 7   | Generic methods | G1 |
-| 8   | Generic classes | G2 |
-| 9   | Constraints, `IEntity`, and the generics explanation | G1–G2 |
-
-### Part 2 — Build the Project (Day 10–14)
-
-| Day | Focus | Requirements |
-| --- | ----- | ------------ |
-| 10 | Models, seed data, and console menus | E1, E2 |
-| 11 | Generic `DataStore<T>` | M1 |
-| 12 | Basic operations for companies, recruiters, and candidates | E3 |
-| 13 | Job operations and the Dictionary lookup | E3, E5 |
-| 14 | Run all test scenarios, write the README, and tag `sprint-1` | Hand-off |
-
-**Requirements:** CL1–CL4, G1, G2 (practice) · E1, E2, M1, E3, E5 (project) · **Test scenarios:** 1–5
-
----
-
-# 📦 Sprint Deliverables
-
-* Collections practice (List, Dictionary, HashSet, Queue, Stack) with a short note on why each was chosen
-* Generics practice (generic method, generic class, explanation of constraints)
-* Job Application Tracker — Part 1 (Console)
-* README
-* Final commit tagged `sprint-1`
-
----
-
-# ✅ Definition of Done
-
-* [ ] Right collection chosen for each case
-* [ ] Generic method and generic class work, and constraints are explained
-* [ ] All four entities are stored in `DataStore<T>` with no raw lists left
-* [ ] The jobs Dictionary stays consistent after every add, update, and remove
-* [ ] A Pending or Rejected company cannot get new jobs
-* [ ] Candidate email is unique (ignoring case), checked with a `HashSet`
-* [ ] Invalid input never crashes the application
-* [ ] Test scenarios 1–5 pass
-* [ ] The Hand-off to Sprint 2 checklist is complete
-
----
-
-# 🎓 Expected Outcome
-
+Requirements: CL1–CL4, G1, G2 (practice) · E1, E2, M1, E3, E5 (project) · Test scenarios: 1–5
+📦 Sprint Deliverables
+- Collections practice (List, Dictionary, HashSet, Queue, Stack) with a short note on why each was chosen
+- Generics practice (generic method, generic class, explanation of constraints)
+- Job Application Tracker — Part 1 (Console)
+- README
+- Final commit tagged sprint-1
+✅ Definition of Done
+- [ ] Right collection chosen for each case
+- [ ] Generic method and generic class work, and constraints are explained
+- [ ] All four entities are stored in DataStore<T> with no raw lists left
+- [ ] The jobs Dictionary stays consistent after every add, update, and remove
+- [ ] A Pending or Rejected company cannot get new jobs
+- [ ] Candidate email is unique (ignoring case), checked with a HashSet
+- [ ] Invalid input never crashes the application
+- [ ] Test scenarios 1–5 pass
+- [ ] The Hand-off to Sprint 2 checklist is complete
+🎓 Expected Outcome
 By the end of Sprint 1, the learner can choose the right collection for each case, write clean reusable generic code, and has a working data foundation ready for Sprint 2.
-
----
-
-# 📅 Sprint 2 — Delegates, Lambdas & Events
-
-**Day 15–28 · Project: Job Application Tracker — Part 2 of 2 (Console)**
-
-## 🎯 Sprint Goal
-
+📅 Sprint 2 — Delegates, Lambdas & Events
+Day 15–28 · Project: Job Application Tracker — Part 2 of 2 (Console)
+🎯 Sprint Goal
 Learn to pass behavior through delegates and lambdas, notify subscribers using events, and use them to finish the Job Application Tracker started in Sprint 1.
-
-**Sprint rules:** no LINQ, no database. You do not start a new project: you open your Sprint 1 repository and add to it. The Sprint 1 Minimum level is the entry gate.
-
----
-
-# 📚 What You Will Learn
-
-## 1. Delegates & Lambdas
-
+Sprint rules: no LINQ, no database. You do not start a new project: you open your Sprint 1 repository and add to it. The Sprint 1 Minimum level is the entry gate.
+📚 What You Will Learn
+1. Delegates & Lambdas
 Learn:
-
-* `Func<T, TResult>`
-* `Action<T>`
-* `Predicate<T>`
-* `Comparison<T>`
-* Lambda expressions
-* When to choose each delegate type
-
----
-
-# 2. Events
-
+- Func<T, TResult>
+- Action<T>
+- Predicate<T>
+- Comparison<T>
+- Lambda expressions
+- When to choose each delegate type
+2. Events
 Learn:
-
-* Declaring, raising, and subscribing to events
-* `EventHandler<T>`
-* Lambda handlers vs named-method handlers
-* Unsubscribing
-* What happens when a subscriber throws
-
----
-
-# 🛠️ Practical Implementation
-
-## Job Application Tracker — Part 2 (Console)
-
+- Declaring, raising, and subscribing to events
+- EventHandler<T>
+- Lambda handlers vs named-method handlers
+- Unsubscribing
+- What happens when a subscriber throws
+🛠️ Practical Implementation
+Job Application Tracker — Part 2 (Console)
 Extend the Sprint 1 project with:
+- Find(Predicate<T>) and Sort(Comparison<T>) on DataStore<T>
+- Search and sort for jobs (title keyword + minimum salary; sort by salary and title)
+- Company approval (approve / reject / list by status)
+- Applications: the Application entity, the ApplicationStatus enum, and the apply workflow
+- Duplicate-application protection with HashSet<(int JobId, int CandidateId)>
+- Three events with handlers: CompanyApproved, ApplicationSubmitted, ApplicationStatusChanged
+📝 Sprint Tasks
+Part 1 — Study & Practice (Day 15–23)
+Day	Focus	Requirements
+15–16	Delegates and lambda syntax; Func<T, TResult> and Action<T>	D1, D2
+17	Predicate<T>	D3
+18	Comparison<T> and sorting with a delegate	D4
+19	Delegates review and the required note	D1–D4
+20	Events: declare, raise, subscribe; EventHandler<T>	EV1
+21	Handlers: lambda vs named method, and unsubscribing	EV1
+22	Event practice and review (publisher, subscriber, a subscriber that throws)	EV1
+23	Review all Sprint 2 topics, re-read Sprint 1 code, plan the changes	—
 
-* `Find(Predicate<T>)` and `Sort(Comparison<T>)` on `DataStore<T>`
-* Search and sort for jobs (title keyword + minimum salary; sort by salary and title)
-* Company approval (approve / reject / list by status)
-* Applications: the `Application` entity, the `ApplicationStatus` enum, and the apply workflow
-* Duplicate-application protection with `HashSet<(int JobId, int CandidateId)>`
-* Three events with handlers: `CompanyApproved`, `ApplicationSubmitted`, `ApplicationStatusChanged`
 
----
+Part 2 — Continue the Project (Day 24–28)
+Day	Focus	Requirements
+24	Search and sort on DataStore<T>	M3
+25	Company approval and list by status	E4
+26	Applications menu and apply workflow	E6
+27	Duplicate protection (Full), then the three events	M4, M2
+28	Run all test scenarios, update the README, and tag sprint-2	—
 
-# 📝 Sprint Tasks
 
-### Part 1 — Study & Practice (Day 15–23)
-
-| Day | Focus | Requirements |
-| --- | ----- | ------------ |
-| 15–16 | Delegates and lambda syntax; `Func<T, TResult>` and `Action<T>` | D1, D2 |
-| 17    | `Predicate<T>` | D3 |
-| 18    | `Comparison<T>` and sorting with a delegate | D4 |
-| 19    | Delegates review and the required note | D1–D4 |
-| 20    | Events: declare, raise, subscribe; `EventHandler<T>` | EV1 |
-| 21    | Handlers: lambda vs named method, and unsubscribing | EV1 |
-| 22    | Event practice and review (publisher, subscriber, a subscriber that throws) | EV1 |
-| 23    | Review all Sprint 2 topics, re-read Sprint 1 code, plan the changes | — |
-
-### Part 2 — Continue the Project (Day 24–28)
-
-| Day | Focus | Requirements |
-| --- | ----- | ------------ |
-| 24 | Search and sort on `DataStore<T>` | M3 |
-| 25 | Company approval and list by status | E4 |
-| 26 | Applications menu and apply workflow | E6 |
-| 27 | Duplicate protection (Full), then the three events | M4, M2 |
-| 28 | Run all test scenarios, update the README, and tag `sprint-2` | — |
-
-**Requirements:** D1–D4, EV1 (practice) · M3, E4, E6, M2 (Minimum) · M4 (Full) · C1 (optional challenge, not graded) · **Test scenarios:** 1–7 (Minimum), 1–8 (Full)
-
----
-
-# 📦 Sprint Deliverables
-
-* Delegate practice (`Func`, `Action`, `Predicate`, `Comparison`) with a short note
-* Event practice (`EV1`)
-* Job Application Tracker — complete (Search, Sort, Approval, Applications, Events)
-* README updated
-* Final commit tagged `sprint-2`
-
----
-
-# ✅ Definition of Done
-
-* [ ] The four delegate types are used correctly, and the learner can say when to choose each
-* [ ] `DataStore<T>` stays generic and gains `Find` and `Sort` (sorting returns a sorted copy)
-* [ ] Company approval and list by status work
-* [ ] A candidate can apply only to an open job of an Approved company
-* [ ] A job with applications cannot be removed
-* [ ] The three events are raised and handled with clear notifications
-* [ ] Duplicate applications are rejected (Full level)
-* [ ] Sprint 1 behavior still works
-* [ ] Test scenarios 1–7 pass (1–8 for Full)
-
----
-
-# 🎓 Expected Outcome
-
+Requirements: D1–D4, EV1 (practice) · M3, E4, E6, M2 (Minimum) · M4 (Full) · C1 (optional challenge, not graded) · Test scenarios: 1–7 (Minimum), 1–8 (Full)
+📦 Sprint Deliverables
+- Delegate practice (Func, Action, Predicate, Comparison) with a short note
+- Event practice (EV1)
+- Job Application Tracker — complete (Search, Sort, Approval, Applications, Events)
+- README updated
+- Final commit tagged sprint-2
+✅ Definition of Done
+- [ ] The four delegate types are used correctly, and the learner can say when to choose each
+- [ ] DataStore<T> stays generic and gains Find and Sort (sorting returns a sorted copy)
+- [ ] Company approval and list by status work
+- [ ] A candidate can apply only to an open job of an Approved company
+- [ ] A job with applications cannot be removed
+- [ ] The three events are raised and handled with clear notifications
+- [ ] Duplicate applications are rejected (Full level)
+- [ ] Sprint 1 behavior still works
+- [ ] Test scenarios 1–7 pass (1–8 for Full)
+🎓 Expected Outcome
 By the end of Sprint 2, the learner can pass behavior through delegates and lambdas, build event-driven notifications, extend an existing codebase without breaking it, and enforce business rules in workflows.
-
----
-
-# 📅 Sprint 3 — LINQ
-
-**Day 29–42 · Project: Sales Data Analytics Dashboard (Console)**
-
-## 🎯 Sprint Goal
-
+📅 Sprint 3 — LINQ
+Day 29–42 · Project: Sales Data Analytics Dashboard (Console)
+🎯 Sprint Goal
 Learn to query and shape data in memory with LINQ, understand how queries execute, and know the common pitfalls.
-
-**Working rule:** every topic day ends with 5–8 practice problems and adds 1–2 queries to the sprint project. The dashboard grows during the sprint instead of being squeezed into the last days.
-
----
-
-# 📚 What You Will Learn
-
-## 1. Execution Concepts
-
+Working rule: every topic day ends with 5–8 practice problems and adds 1–2 queries to the sprint project. The dashboard grows during the sprint instead of being squeezed into the last days.
+📚 What You Will Learn
+1. Execution Concepts
 Learn:
-
-* Deferred vs immediate execution
-* Method syntax vs query syntax
-* IEnumerable vs IQueryable (concept)
-* Multiple enumeration
-* Captured variables in closures
-
----
-
-# 2. Filtering & Quantifiers
-
+- Deferred vs immediate execution
+- Method syntax vs query syntax
+- IEnumerable vs IQueryable (concept)
+- Multiple enumeration
+- Captured variables in closures
+2. Filtering & Quantifiers
 Learn:
-
-* Where
-* OfType
-* Any
-* All
-* Contains
-
----
-
-# 3. Projection & Ordering
-
+- Where
+- OfType
+- Any
+- All
+- Contains
+3. Projection & Ordering
 Learn:
-
-* Select
-* SelectMany
-* Anonymous types
-* Projecting into records / DTOs
-* OrderBy
-* ThenBy
-
----
-
-# 4. Element & Conversion Operators
-
+- Select
+- SelectMany
+- Anonymous types
+- Projecting into records / DTOs
+- OrderBy
+- ThenBy
+4. Element & Conversion Operators
 Learn:
-
-* First
-* FirstOrDefault
-* Single
-* SingleOrDefault
-* DefaultIfEmpty
-* ToList
-* ToArray
-* ToDictionary
-* ToHashSet
-* ToLookup
-
----
-
-# 5. Paging / Partitioning
-
+- First
+- FirstOrDefault
+- Single
+- SingleOrDefault
+- DefaultIfEmpty
+- ToList
+- ToArray
+- ToDictionary
+- ToHashSet
+- ToLookup
+5. Paging / Partitioning
 Learn:
-
-* Skip
-* Take
-
----
-
-# 6. Grouping
-
+- Skip
+- Take
+6. Grouping
 Learn:
-
-* GroupBy
-* Composite keys
-* Per-group aggregates
-* ToLookup
-
----
-
-# 7. Joining
-
+- GroupBy
+- Composite keys
+- Per-group aggregates
+- ToLookup
+7. Joining
 Learn:
-
-* Join
-* GroupJoin
-* Left join (GroupJoin + DefaultIfEmpty)
-
----
-
-# 8. Aggregation
-
+- Join
+- GroupJoin
+- Left join (GroupJoin + DefaultIfEmpty)
+8. Aggregation
 Learn:
-
-* Sum
-* Count
-* Average
-* Min
-* Max
-* MinBy
-* MaxBy
-* Aggregate
-
----
-
-# 9. Set Operations & Combining
-
+- Sum
+- Count
+- Average
+- Min
+- Max
+- MinBy
+- MaxBy
+- Aggregate
+9. Set Operations & Combining
 Learn:
-
-* Distinct
-* DistinctBy
-* Union
-* Intersect
-* Except
-* Concat
-
----
-
-# 10. Custom LINQ
-
+- Distinct
+- DistinctBy
+- Union
+- Intersect
+- Except
+- Concat
+10. Custom LINQ
 Learn:
-
-* Extension methods on `IEnumerable<T>`
-* `yield return`
-* `Func` vs `Expression<Func>` (the bridge to EF Core)
-
----
-
-# 11. Pitfalls & Performance
-
+- Extension methods on IEnumerable<T>
+- yield return
+- Func vs Expression<Func> (the bridge to EF Core)
+11. Pitfalls & Performance
 Learn:
-
-* Any vs Count
-* Avoiding multiple enumeration
-* When to materialize a query
-* LINQ vs foreach
-
----
-
-# 🛠️ Practical Implementation
-
-## Sales Data Analytics Dashboard (Console)
-
+- Any vs Count
+- Avoiding multiple enumeration
+- When to materialize a query
+- LINQ vs foreach
+🛠️ Practical Implementation
+Sales Data Analytics Dashboard (Console)
 Build a console dashboard that answers business questions about sales data using LINQ:
-
-* Filtering and searching sales
-* Grouping and aggregating results
-* Joining related data sets
-* Ordering and paging results
-
----
-
-# 📝 Sprint Tasks
-
-### Task 1 — Execution Concepts
-
-*Day 29.* Demonstrate deferred vs immediate execution, multiple enumeration, and closures.
-
----
-
-### Task 2 — Filtering & Quantifiers
-
-*Day 30.* Practice Where, OfType, Any, All, and Contains.
-
----
-
-### Task 3 — Projection & Ordering
-
-*Day 31–32.* Practice Select, SelectMany, projection into records/DTOs, and ordering.
-
----
-
-### Task 4 — Element, Conversion & Paging
-
-*Day 33.* Practice element operators, conversion operators, Skip, and Take.
-
----
-
-### Task 5 — Grouping
-
-*Day 34–35.* Practice GroupBy with composite keys, per-group aggregates, and ToLookup.
-
----
-
-### Task 6 — Joining
-
-*Day 36–37.* Practice Join, GroupJoin, and left join.
-
----
-
-### Task 7 — Aggregation & Set Operations
-
-*Day 38.* Practice Sum, Count, Average, Min, Max, MinBy, MaxBy, Aggregate, Distinct, DistinctBy, Union, Intersect, Except, and Concat.
-
----
-
-### Task 8 — Custom LINQ & Pitfalls
-
-*Day 39.* Write extension methods on `IEnumerable<T>`, use `yield return`, compare `Func` with `Expression<Func>`, and review common LINQ pitfalls and performance decisions.
-
----
-
-### Task 9 — Sprint Project
-
-*Day 40–41.* Finish and polish the Sales Data Analytics Dashboard.
-
----
-
-### Task 10 — README
-
-*Day 42.* Document the project: overview, features, how to run, the reports and their LINQ operators, sample output, design decisions, and known limitations.
-
----
-
-# 📦 Sprint Deliverables
-
-* Practice problems for every topic
-* Custom LINQ extension methods
-* Sales Data Analytics Dashboard (Console)
-* README
-
----
-
-# ✅ Definition of Done
-
-* [ ] Deferred vs immediate execution is understood
-* [ ] Filtering, projection, and ordering queries work
-* [ ] Grouping and joining queries work
-* [ ] Aggregation and set operations work
-* [ ] Custom LINQ extension methods work
-* [ ] Common pitfalls are understood
-* [ ] Sales Data Analytics Dashboard works
-
----
-
-# 🎓 Expected Outcome
-
+- Filtering and searching sales
+- Grouping and aggregating results
+- Joining related data sets
+- Ordering and paging results
+📝 Sprint Tasks
+Task 1 — Execution Concepts
+Day 29. Demonstrate deferred vs immediate execution, multiple enumeration, and closures.
+Task 2 — Filtering & Quantifiers
+Day 30. Practice Where, OfType, Any, All, and Contains.
+Task 3 — Projection & Ordering
+Day 31–32. Practice Select, SelectMany, projection into records/DTOs, and ordering.
+Task 4 — Element, Conversion & Paging
+Day 33. Practice element operators, conversion operators, Skip, and Take.
+Task 5 — Grouping
+Day 34–35. Practice GroupBy with composite keys, per-group aggregates, and ToLookup.
+Task 6 — Joining
+Day 36–37. Practice Join, GroupJoin, and left join.
+Task 7 — Aggregation & Set Operations
+Day 38. Practice Sum, Count, Average, Min, Max, MinBy, MaxBy, Aggregate, Distinct, DistinctBy, Union, Intersect, Except, and Concat.
+Task 8 — Custom LINQ & Pitfalls
+Day 39. Write extension methods on IEnumerable<T>, use yield return, compare Func with Expression<Func>, and review common LINQ pitfalls and performance decisions.
+Task 9 — Sprint Project
+Day 40–41. Finish and polish the Sales Data Analytics Dashboard.
+Task 10 — README
+Day 42. Document the project: overview, features, how to run, the reports and their LINQ operators, sample output, design decisions, and known limitations.
+📦 Sprint Deliverables
+- Practice problems for every topic
+- Custom LINQ extension methods
+- Sales Data Analytics Dashboard (Console)
+- README
+✅ Definition of Done
+- [ ] Deferred vs immediate execution is understood
+- [ ] Filtering, projection, and ordering queries work
+- [ ] Grouping and joining queries work
+- [ ] Aggregation and set operations work
+- [ ] Custom LINQ extension methods work
+- [ ] Common pitfalls are understood
+- [ ] Sales Data Analytics Dashboard works
+🎓 Expected Outcome
 By the end of Sprint 3, the learner can express almost any in-memory data question as a clear LINQ query and understands how that query executes.
-
----
-
-# 📅 Sprint 4 — Entity Framework Core
-
-**Day 43–56 · Project: Library Management System (EF Core)**
-
-## 🎯 Sprint Goal
-
-Learn to persist and query data with EF Core: model the database, write efficient queries, understand tracking and loading, and read the SQL that EF generates.
-
-**Working rule:** every day, look at the SQL that EF Core generates (logging or `ToQueryString()`) for the queries you wrote.
-
----
-
-# 📚 What You Will Learn
-
-## 1. Setup
-
-Learn:
-
-* DbContext
-* Entities
-* Conventions
-* Code First
-* Migrations (add, apply, rollback, remove, script)
-
----
-
-# 2. CRUD & Seeding
-
-Learn:
-
-* Create, read, update, delete
-* Data seeding
-* What SaveChanges actually does
-
----
-
-# 3. Modeling
-
-Learn:
-
-* One-to-Many
-* Many-to-Many (skip navigations and explicit join entity)
-* One-to-One
-* Fluent API basics (MaxLength, Precision, Required)
-* Enums as strings
-* Owned entities
-
----
-
-# 4. LINQ to Entities
-
-Learn:
-
-* How a query becomes SQL
-* Building queries with IQueryable
-* DTO projection with Select
-* Client vs server evaluation
-* What EF cannot translate
-
----
-
-# 5. Loading Strategies
-
-Learn:
-
-* Eager loading (Include / ThenInclude, filtered Include)
-* Explicit loading
-* Lazy loading (awareness only)
-* The N+1 problem
-* Split queries vs single query
-
----
-
-# 6. Change Tracking
-
-Learn:
-
-* Entity states
-* AsNoTracking
-* Attach / Update
-* Connected vs disconnected updates
-
----
-
-# 7. Raw SQL & Bulk Operations
-
-Learn:
-
-* FromSql
-* ExecuteSql
-* ExecuteUpdate
-* ExecuteDelete
-
----
-
-# 8. Concurrency & Transactions
-
-Learn:
-
-* RowVersion
-* Optimistic concurrency
-* Implicit transactions in SaveChanges
-* Explicit transactions (Commit / Rollback)
-
----
-
-# 9. Global Query Filters
-
-Learn:
-
-* Global query filters
-* Soft delete
-
----
-
-# 10. Performance
-
-Learn:
-
-* Reading the generated SQL
-* Fixing N+1
-* Projecting instead of loading whole entities
-* Avoiding early `ToList`
-
----
-
-# 🛠️ Practical Implementation
-
-## Library Management System (EF Core)
-
-Build the Library Management System with a real database:
-
-* A model with One-to-Many and Many-to-Many relationships
-* Migrations and seed data
-* CRUD operations
-* Queries using eager loading, projection, and AsNoTracking
-* Transactions where multiple changes must succeed together
-
----
-
-# 📝 Sprint Tasks
-
-### Task 1 — Setup
-
-*Day 43.* Create the DbContext and entities, and manage the schema with migrations.
-
----
-
-### Task 2 — CRUD & Seeding
-
-*Day 44.* Implement CRUD operations and seed data.
-
----
-
-### Task 3 — Modeling
-
-*Day 45–46.* Model One-to-Many, Many-to-Many, and One-to-One relationships, configure the Fluent API, map enums, and use owned entities.
-
----
-
-### Task 4 — LINQ to Entities
-
-*Day 47.* Write queries with IQueryable, project into DTOs, and review how each query becomes SQL.
-
----
-
-### Task 5 — Loading Strategies
-
-*Day 48.* Use Include / ThenInclude, reproduce and fix the N+1 problem, and compare split and single queries.
-
----
-
-### Task 6 — Change Tracking
-
-*Day 49.* Inspect entity states, use AsNoTracking, and update entities with Attach / Update.
-
----
-
-### Task 7 — Raw SQL & Bulk Operations
-
-*Day 50.* Run raw SQL and bulk updates and deletes.
-
----
-
-### Task 8 — Concurrency & Transactions
-
-*Day 51.* Add optimistic concurrency and use explicit transactions with Commit / Rollback.
-
----
-
-### Task 9 — Global Query Filters
-
-*Day 52.* Implement soft delete with a global query filter.
-
----
-
-### Task 10 — Performance Review
-
-*Day 53.* Review the project's queries, read the SQL, and fix inefficient queries.
-
----
-
-### Task 11 — Sprint Project
-
-*Day 54–55.* Finish the Library Management System.
-
----
-
-### Task 12 — README
-
-*Day 56.* Document the project: overview, features, database setup and migrations, data model, how to run, the queries, sample output, design decisions, and known limitations.
-
----
-
-# 📦 Sprint Deliverables
-
-* DbContext, entities, and migrations
-* Relationships and Fluent API configuration
-* Seed data
-* Queries using eager loading, projection, and AsNoTracking
-* Concurrency and transactions
-* Soft delete with a global query filter
-* Library Management System (EF Core)
-* README
-
----
-
-# ✅ Definition of Done
-
-* [ ] DbContext and migrations work
-* [ ] CRUD operations work
-* [ ] One-to-Many and Many-to-Many relationships work
-* [ ] Fluent API and owned entities are configured
-* [ ] Queries are written with LINQ to Entities and DTO projection
-* [ ] N+1 is understood and fixed
-* [ ] Change tracking is understood
-* [ ] Concurrency and transactions work
-* [ ] Soft delete works
-* [ ] Learner can read the SQL EF Core generates
-* [ ] Library Management System works
-
----
-
-# 🎓 Expected Outcome
-
-By the end of Sprint 4, the learner can design a database model with EF Core, write efficient queries, and explain what happens between a LINQ query and the SQL that runs.
-
----
-
----
-
-# 🏛️ Library Management API — Overview (Sprints 5–6)
-
-The Web API is built over **two sprints of 15 days each**. Sprint 6 improves the same solution built in Sprint 5; it is not a new project.
-
-### Domain
-
-* **Author** (name, bio) — one author has many books
-* **Book** (title, ISBN, published year, `IsAvailable` controlled by the server, author)
-* **Member** (full name, unique email, optional phone, `JoinedAt` set by the server)
-* **Loan** *(Sprint 6)* (book + member, loan date, due date = loan date + 14 days, return date; an active loan has no return date)
-
-### Architecture
-
-* **N-Tier**, three projects created all at once at the start of Sprint 5: **`LibraryApi.API`** (thin controllers, exception middleware, `Program.cs`) → **`LibraryApi.Business`** (services, DTOs, custom exceptions) → **`LibraryApi.Data`** (entities, `DbContext`, migrations, repositories, Unit of Work)
-* Dependencies go one way only: `API → Business → Data`
-* A controller calls **one service**. Only services use repositories / the Unit of Work. Services return **DTOs**, never entities
-* The Business layer never imports EF Core: everything goes through repository methods
-* The learner **writes** the Generic Repository (Sprint 5) and the Unit of Work (Sprint 6); the sprints describe *what* to build and which rules to follow, not the code
-
-### All Endpoints (12)
-
-| Sprint | Controller | Endpoints                                                                                       |
-| ------ | ---------- | ----------------------------------------------------------------------------------------------- |
-| 5      | Authors    | `GET /api/authors` (with `booksCount`) · `POST /api/authors` · `DELETE /api/authors/{id}`        |
-| 5      | Books      | `GET /api/books` · `POST /api/books` · `PUT /api/books/{id}`                                     |
-| 5      | Members    | `GET /api/members` · `GET /api/members/{id}` · `POST /api/members`                               |
-| 6      | Loans      | `POST /api/loans` (borrow) · `PUT /api/loans/{id}/return` · `GET /api/members/{id}/loans` (lives in `LoansController`) |
-
-> The other CRUD endpoints (for example `GET /api/books/{id}`, `DELETE` for books and members, `GET /api/loans`) are intentionally out of scope. Do not implement extra endpoints unless the instructor asks for them.
-
-### Status Code Rules
-
-* An id in the **URL** that does not exist → `404`
-* An id in the **body** that does not exist → `400`
-* A conflict with the current state of the data (duplicate ISBN or email, deleting an author with books, borrowing an unavailable book, returning a loan twice) → `409`
-* Unexpected errors → `500` with a generic message and no stack trace
-
----
-
-# 📅 Sprint 5 — Web API: Foundations, Services & Business Logic
-
-**Day 57–71 · Project: Library Management API — Part 1**
-
-## 🎯 Sprint Goal
-
-Build the foundation of a layered Web API: a three-project solution, the entities and database (Code First), a Generic Repository, DTOs, custom exceptions with a global exception middleware, and one service per entity that owns its business rules.
-
----
-
-# 📚 What You Will Learn
-
-## 1. Solution Setup & N-Tier Architecture
-
-Learn:
-
-* Solution vs project, project references
-* What a tier (layer) is and why we separate them
-* Swagger / OpenAPI
-
----
-
-# 2. Data Layer
-
-Learn:
-
-* Entities and relationships with EF Core Code First
-* `BaseEntity` and one-to-many relationships
-* Fluent API vs Data Annotations
-* Connection strings and Dependency Injection (scoped lifetime)
-* Migrations when the `DbContext` lives in a different project (`--project` / `--startup-project`)
-
----
-
-# 3. Generic Repository
-
-Learn:
-
-* The Repository pattern
-* Generic constraints (`where T : BaseEntity`)
-* `Expression<Func<T, object>>` and `Include`
-
----
-
-# 4. Controllers, DTOs & Validation
-
-Learn:
-
-* Controllers and `[ApiController]`
-* DTOs instead of exposing entities
-* Validation attributes and automatic `400` responses
-* HTTP status codes (`200`, `201`, `204`, `400`, `404`, `409`, `500`)
-* `CreatedAtAction`, `PUT` with `204`, and over-posting
-
----
-
-# 5. Exceptions & Middleware
-
-Learn:
-
-* The ASP.NET Core middleware pipeline and its order
-* Custom exceptions (`NotFoundException`, `BadRequestException`, `ConflictException`)
-* A global exception middleware with one consistent JSON error format
-
----
-
-# 6. Business Logic in Services
-
-Learn:
-
-* Business rules in services, not in controllers or repositories
-* `404` vs `409` vs `400`
-* Uniqueness checks that exclude the record itself on update
-* String normalization (trim / lowercase) and server-controlled fields
-* Thin controllers and DI extension methods
-
----
-
-# 🛠️ Practical Implementation
-
-## Library Management API — Part 1
-
-### Entities
-
-`BaseEntity`, `Author`, `Book`, `Member`, `AppDbContext`, unique indexes on `ISBN` and `Email`, and the first migration (in the Data project).
-
-### Author Endpoints
-
-* `GET /api/authors` — list authors with `booksCount`
-* `POST /api/authors` — create an author
-* `DELETE /api/authors/{id}` — delete an author only if they have no books (`404`, `409`)
-
-### Book Endpoints
-
-* `GET /api/books` — list books with the author name
-* `POST /api/books` — create a book (author must exist, ISBN must be unique)
-* `PUT /api/books/{id}` — update a book (client can never change `IsAvailable`)
-
-### Member Endpoints
-
-* `GET /api/members` — list members
-* `GET /api/members/{id}` — get one member
-* `POST /api/members` — create a member (email normalized and unique, `JoinedAt` set by the server)
-
-### Simple Rules (plain checks in the services)
-
-* Invalid DTO → `400`
-* A missing URL id → `404`; a missing `AuthorId` in the body → `400`
-* A duplicate ISBN or email (excluding the record itself on update) → `409`
-* An author with books cannot be deleted → `409`
-* Text input is trimmed; emails are stored trimmed and lowercase
-* The server controls `IsAvailable` and `JoinedAt`
-
----
-
-# 📝 Sprint Tasks
-
-| Day | Focus | You finish the day with |
-| --- | ----- | ----------------------- |
-| 57 | Solution setup | Three projects, references, packages, Swagger |
-| 58 | Entities and relationships | `BaseEntity`, `Author`, `Book`, `Member`, `AppDbContext` |
-| 59 | Database setup | Connection string, DI registration, migration applied |
-| 60 | Generic Repository | `IGenericRepository<T>` and `GenericRepository<T>` |
-| 61 | **First working slice: Authors** | DTOs with validation, a minimal `AuthorService`, `GET` and `POST /api/authors` in Swagger |
-| 62 | Exceptions and middleware | Custom exceptions, global middleware, consistent error format |
-| 63 | Author delete with business rule | `DELETE /api/authors/{id}` with `404` and `409` |
-| 64 | Book service: reads and create | List books, create book, author and ISBN checks |
-| 65 | Book update | Update a book without letting the client change `IsAvailable` |
-| 66 | Member service and endpoints | List members, get member by id, create member |
-| 67 | Controllers and DI review | Thin controllers and correct service registrations |
-| 68 | Validation tests | Run the essential test scenarios in Swagger |
-| 69 | Fixes and regression | Fix failed tests and verify database constraints |
-| 70 | Architecture review | Check references, no business logic in controllers, clean code |
-| 71 | Wrap-up | Short README, Definition of Done, buffer time |
-
-> Spend the first 1–2 hours of each day on the study topics, then code. Day 59 (migrations across two projects) often takes longer than planned; use the buffer days at the end (69–71) if needed.
-
----
-
-# 📦 Sprint Deliverables
-
-* Three-project solution (`LibraryApi.API`, `LibraryApi.Business`, `LibraryApi.Data`)
-* Entities, `AppDbContext`, and migrations (in the Data project)
-* Generic Repository
-* One service per entity (`AuthorService`, `BookService`, `MemberService`) with interfaces
-* DTOs, custom exceptions, and the global exception middleware
-* 9 working endpoints tested in Swagger
-* README (how to run, connection string, migrations, known limitations)
-
----
-
-# ✅ Definition of Done
-
-* [ ] The solution has three projects and the references are exactly `API → Business → Data`
-* [ ] Every entity has its own service with an interface
-* [ ] Controllers depend only on a service interface and contain no business rules
-* [ ] DTOs live in the Business project, and no entity is returned from or accepted by any endpoint
-* [ ] No file in `LibraryApi.Business` imports `Microsoft.EntityFrameworkCore`
-* [ ] All 9 required endpoints work and were tested in Swagger
-* [ ] Every row of the test scenarios table gives the expected status code
-* [ ] The exception middleware is registered first, and every error uses the same JSON format
-* [ ] Unique indexes exist for `ISBN` and `Email`
-* [ ] Known limitations are written in the README
-
----
-
-# 🎓 Expected Outcome
-
-By the end of Sprint 5, the learner can build a layered Web API with a database, put business rules in services, and explain how a request moves from HTTP to the database and back.
-
----
-
-# 📅 Sprint 6 — Web API: Unit of Work & Loans
-
-**Day 72–86 · Project: Library Management API — Part 2**
-
-## 🎯 Sprint Goal
-
-Improve the same solution: refactor the data layer to the **Unit of Work** pattern, then add the **Loan** feature (borrow, return, and member loan history) with business rules that combine several entities.
-
----
-
-# 📚 What You Will Learn
-
-## 1. Unit of Work
-
-Learn:
-
-* The problem caused by saving inside each repository
-* The Unit of Work pattern on top of the Generic Repository
-* Why an operation that changes several records must be saved **once**
-* Who owns the lifetime of the `DbContext` (the DI container)
-* Refactoring working code safely, in small steps
-
----
-
-# 2. Loan Feature
-
-Learn:
-
-* A new entity with two relationships and `Restrict` delete behavior
-* A new service (`LoanService`) with its own business rules
-* Combining rules from several entities in one service
-* The order of business checks
-* State-based conflicts (`409`) and the URL-id vs body-id rule
-
----
-
-# 3. Routing & Controllers
-
-Learn:
-
-* Absolute routes (`[HttpGet("/api/...")]`)
-* Why `GET /api/members/{id}/loans` lives in `LoansController` (one controller = one service)
-
----
-
-# 4. Edge-Case Testing & Review
-
-Learn:
-
-* Designing edge-case tests (a member with exactly 3 active loans, borrowing an unavailable book, returning a loan twice)
-* Reviewing transaction boundaries and layer boundaries
-
----
-
-# 🛠️ Practical Implementation
-
-## Library Management API — Part 2
-
-### Part A — Refactor to Unit of Work
-
-* Repositories only track changes; they no longer call `SaveChangesAsync`
-* Add `IUnitOfWork` / `UnitOfWork` and register it in DI
-* Switch the services to the Unit of Work; **controllers do not change**
-* Run the Sprint 5 tests again as a regression check
-
-### Part B — The Loan Feature
-
-* `GET /api/members/{id}/loans` — list one member's loans (`404` if the member does not exist)
-* `POST /api/loans` — borrow a book (`201`; `400` for a missing book or member in the body; `409` if the book is unavailable or the member already has 3 active loans)
-* `PUT /api/loans/{id}/return` — return a book (`204`; `404`; `409` if already returned)
-
-### Simple Rules (plain checks in `LoanService`)
-
-* The book and the member (ids in the body) must exist
-* The book must be available
-* A member can have at most 3 active loans
-* `DueDate` = `LoanDate` + 14 days
-* Borrow and return each call `SaveChangesAsync()` **once**
-* A loan cannot be returned twice
-
----
-
-# 📝 Sprint Tasks
-
-| Day | Focus | You finish the day with |
-| --- | ----- | ----------------------- |
-| 72 | Baseline and the problem | `sprint-2` branch, Sprint 5 tests pass, the "two saves" experiment done and deleted |
-| 73 | Repository and Unit of Work | Repositories track changes only, `CountAsync` added, `IUnitOfWork` registered in DI |
-| 74 | Switch services and regression | Services use the Unit of Work, all Sprint 5 tests pass again |
-| 75 | Loan entity and migration | `Loan`, relationships (Restrict), `AddLoanTable` migration, Loan DTOs |
-| 76 | Loan read by member | `GetByMemberAsync` and `GET /api/members/{id}/loans` logic |
-| 77 | Borrow flow | `BorrowAsync` with availability, member limit, dates, and one save |
-| 78 | Return flow | `ReturnAsync` with one save and duplicate-return protection |
-| 79 | Loan controller | The three required loan endpoints |
-| 80 | Borrow/return tests | Successful borrow/return and important failure cases |
-| 81 | Unit of Work review | Each service saves at the correct point; the "one save only" test |
-| 82 | Error handling and fixes | Fix failing tests and verify error responses |
-| 83 | *Recommended extension:* concurrency, part 1 | `RowVersion` on `Book`, migration, a reproduced double-borrow problem |
-| 84 | *Recommended extension:* concurrency, part 2 | Middleware returns `409` for `DbUpdateConcurrencyException` and unique-index errors |
-| 85 | Architecture and code review | Remove unused methods and check layer boundaries |
-| 86 | Final Review & Project Presentation | Final README, Definition of Done, and buffer time |
-
-> Part A is a small refactor, so it fits in Days 72–74. Days 83–84 are for the optional **Concurrency** extension; if you skip it, use those two days as buffer for the required work.
-
----
-
-# 📦 Sprint Deliverables
-
-* Unit of Work (`IUnitOfWork` / `UnitOfWork`) and refactored services
-* `Loan` entity, relationships, and the `AddLoanTable` migration
-* `LoanService` and `LoansController`
-* Loan endpoints (3), on top of the 9 endpoints from Sprint 5
-* Updated README (architecture, how to run, known limitations)
-* The `sprint-2` branch merged into `main`
-
----
-
-# ✅ Definition of Done
-
-* [ ] Dependencies still go only `API → Business → Data`
-* [ ] No repository calls `SaveChangesAsync`; only services call it on the Unit of Work
-* [ ] No controller uses `IUnitOfWork`, `DbContext`, repositories, or entities
-* [ ] Every controller injects exactly one service, and `GET /api/members/{id}/loans` is in `LoansController`
-* [ ] All 9 Sprint 5 endpoints still work
-* [ ] Borrow and return each use **one** `SaveChangesAsync`
-* [ ] The borrow and return rules are implemented, and every required test row gives the expected status code
-* [ ] A missing URL id returns `404`, a missing body id returns `400`, and returning a loan twice returns `409`
-* [ ] README is updated and lists the known limitations
-
----
-
-# 🎁 Optional Bonus Challenges
-
-For learners who finish the required work early. Bonus work is never required for the sprint to be complete.
-
-* **Concurrency** (recommended first bonus): `RowVersion` on `Book`, and a middleware that returns `409` instead of `500`
-* **Authentication with JWT:** ASP.NET Core Identity, register / login, `[Authorize]`, roles
-* **Other ideas:** AutoMapper, xUnit + Moq, overdue loans endpoint, late fees, lazy repositories in the Unit of Work, soft delete
-
----
-
-# 🎓 Expected Outcome
-
-By the end of Sprint 6, the learner can build a complete Web API backed by a database, use the Unit of Work to save related changes as one operation, enforce real business rules across entities, and explain how a request moves from HTTP to the database and back.
-
----
-
-# 🏁 Final Level Completion
-
-A learner completes Level 1 when all six sprints are completed and the Library Management API works:
-
-```text
-Collections & Generics
-     ↓
-Delegates, Lambdas & Events
-     ↓
-LINQ
-     ↓
-EF Core
-     ↓
-Web API Foundations, Services & Business Logic
-     ↓
-Unit of Work & Loans
-     ↓
-Library Management API
-```
-
----
-
-# 🎯 Final Project Review
-
-At the end of Level 1, the learner must be able to explain:
-
-## 1. C# Foundations
-
-Why was each collection chosen?
-
-Why does a generic `GetById` need the `IEntity` constraint?
-
-How do delegates, lambdas, and events work?
-
-What is the difference between declaring and raising an event?
-
----
-
-## 2. LINQ
-
-What is the difference between deferred and immediate execution?
-
-What is the difference between `IEnumerable` and `IQueryable`?
-
-Why should multiple enumeration be avoided?
-
----
-
-## 3. EF Core
-
-How does a LINQ query become SQL?
-
-What is the difference between tracking and no-tracking queries?
-
-What is the N+1 problem and how was it fixed?
-
----
-
-## 4. Web API
-
-How does a request move from HTTP to the database and back?
-
-Why are different HTTP methods and status codes used?
-
-Why is an id in the URL a `404` but an id in the body a `400`?
-
-What is the difference between Transient, Scoped, and Singleton?
-
----
-
-## 5. Architecture
-
-Why is the solution split into API, Business, and Data?
-
-What do the Generic Repository and the Unit of Work do?
-
-Why are DTOs used instead of returning entities?
-
-Why does a controller call only one service?
-
----
-
-## 6. Business Rules
-
-Where are the Library API business rules enforced?
-
-What is the difference between validation (DTO rules) and business rules?
-
-Why do borrow and return save only once?
-
-How are borrowing rules (availability, 3 active loans, no double return) checked?
-
----
-
-## 7. Trade-offs
-
-For important decisions, the learner should be able to explain:
-
-```text
-Problem
-   ↓
-Possible Solutions
-   ↓
-Chosen Solution
-   ↓
-Why?
-   ↓
-Trade-offs
-```
-
-The learner should not be rewarded for choosing the most sophisticated solution.
-
-The learner should be rewarded for choosing a solution that is:
-
-* Appropriate
-* Understandable
-* Maintainable
-* Justified
-* Consistent with the project's requirements
-
----
-
-# 🧠 Engineering Practice Throughout All Sprints
-
-These are not separate lessons. They are part of how the learner is evaluated throughout the level.
-
-## 1. Debugging
-
-Use:
-
-```text
-Symptom
- ↓
-Observation
- ↓
-Hypothesis
- ↓
-Experiment
- ↓
-Root Cause
- ↓
-Fix
-```
-
-The learner should avoid:
-
-> "Change random code until it works."
-
----
-
-## 2. Reading the Generated SQL
-
-From Sprint 4 onward, the learner checks the SQL that EF Core generates for the queries they write.
-
----
-
-## 3. Code Review
-
-Throughout the level, review:
-
-* Naming
-* Responsibility boundaries
-* Duplication
-* Error handling
-* Status codes
-* Query efficiency
-
----
-
-## 4. Git Discipline
-
-* Commit after every finished requirement, with the requirement ID in the message (Sprints 1–4)
-* Commit before every refactor step, and work on a branch for Sprint 6
-* Push every project to GitHub with a README
-
----
-
-# 🚫 Explicitly Out of Scope
-
-The following are NOT required in Level 1:
-
-* Authentication and authorization (JWT, Identity, roles): optional bonus in Sprint 6 only
-* AutoMapper and unit testing frameworks (xUnit, Moq): optional bonus ideas only
-* File upload
-* Reporting endpoints
-* Clean Architecture, CQRS, and MediatR
-* Caching and background processing
-* Docker, CI/CD, and deployment
-* Microservices
-* Front-end
-
-These topics belong to later levels.
-
----
-
-# 🏆 Level 1 Philosophy
-
-```text
-Learn
-  ↓
-Practice
-  ↓
-Build
-  ↓
-Debug
-  ↓
-Explain
-```
-
-The goal is not:
-
-> How many technologies did the learner use?
-
-The goal is:
-
-> Can the learner take a clear requirement, build a working API on top of a database, enforce real business rules, and explain the decisions behind it?
-
----
-
-# Final Principle
-
-**One Level.**
-
-**Six Sprints.**
-
-**One Final Project.**
-
-**Real Business Rules.**
-
-**No Technology for Technology's Sake.**
+Sprint 4 — Database Design, SQL & Entity Framework Core
+Days: 43–56 · 14 days
+Project: Library Management Database → Library Management System (EF Core)
+Goal
+Learners design and query a relational database before accessing it through C#. Then they implement the same domain using EF Core. This makes the connection between tables, C# entities, LINQ queries, and generated SQL clear.
+Part A — Database Design & SQL
+Design a database for Authors, Books, and Members.
+Learn and practice:
+- Tables, rows, columns, data types, and NULL
+- Primary keys, foreign keys, one-to-many relationships, and referential integrity
+- Required/unique constraints and basic normalization
+- SELECT, WHERE, ORDER BY, INSERT, UPDATE, and DELETE
+- INNER JOIN, LEFT JOIN, GROUP BY, COUNT, and SUM
+- Basic indexes and why constraints matter
+Database deliverable: Save the schema, seed data, and tested SQL queries in a /Database folder.
+Part B — EF Core Implementation
+Build the same Library Management domain with EF Core Code First.
+Learn and practice:
+- Entities, DbContext, connection strings, and dependency injection
+- Migrations: create, apply, and inspect
+- CRUD and SaveChangesAsync
+- Relationships and Fluent API configuration
+- Required fields, maximum lengths, precision, and unique indexes
+- LINQ to Entities and DTO projection
+- Include / ThenInclude where needed
+- The N+1 problem and how to identify and improve it
+- Tracking vs. AsNoTracking
+- Async database operations and basic transaction concepts
+- Inspecting generated SQL through logging or ToQueryString()
+Important: The SQL schema and EF Core model must represent the same domain. Do not maintain two competing designs.
+Day-by-day plan
+Day	Focus	Expected outcome
+43	Relational database basics	Identify entities, data types, keys, and relationships; sketch the schema
+44	SQL CRUD & constraints	Create tables, constraints, and seed data; practice CRUD queries
+45	Joins & aggregation	Write joins and grouped queries; explain basic normalization and indexes
+46	Database project review	Finish /Database schema and queries; verify relationships and constraints
+47	EF Core setup	Create entities and DbContext; configure connection string and Code First
+48	Migrations & seeding	Apply migrations, seed data, and verify the generated schema
+49	CRUD & SaveChangesAsync	Implement CRUD and explain when changes reach the database
+50	Relationships & Fluent API	Configure Author–Book relationships, required fields, max lengths, and unique ISBN
+51	LINQ to Entities & projection	Write filtered/projected queries and inspect generated SQL
+52	Loading & N+1	Use Include / ThenInclude where needed; reproduce and improve an N+1-style query
+53	Tracking & async queries	Compare tracking and AsNoTracking; use async query methods
+54	Integration & reliability	Recheck constraints, relationships, error cases, and basic transaction concepts
+55	Finish the project	Complete the system and resolve review findings
+56	README & handoff	Document schema, queries, setup, migrations, features, design decisions, and limitations
+
+
+Sprint 4 deliverables
+- /Database folder with SQL schema, seed data, and tested SQL queries
+- EF Core entities, DbContext, configuration, and migrations
+- Working CRUD operations through EF Core
+- Relationships and constraints, including unique ISBN enforcement
+- LINQ queries with projection and appropriate loading
+- Notes/evidence showing generated SQL for selected queries
+- Library Management Database + EF Core System README
+Definition of Done
+- SQL schema has correct primary keys, foreign keys, required fields, and a unique ISBN constraint.
+- CRUD, joins, filtering, and aggregation SQL queries return expected results.
+- EF Core configuration and migrations work from a clean setup.
+- CRUD works through EF Core.
+- The learner can explain how the relational schema maps to the EF Core model.
+- The learner understands LINQ-to-SQL translation, AsNoTracking, and the N+1 problem.
+- README includes setup steps, sample queries, design decisions, and known limitations.
+Scope control
+Owned entities, explicit/lazy loading, split queries, raw SQL and bulk operations, concurrency/RowVersion, global query filters, and soft delete are extension topics, not required Sprint 4 outcomes. Prioritize understanding the core database and EF Core workflow over covering every advanced topic.
+Library Management API — Shared Domain (Sprints 5–6)
+Sprints 5 and 6 extend the Library Management domain introduced in Sprint 4. The database and EF Core work are reused rather than discarded.
+Domain
+- Author: name and bio; one author can have many books
+- Book: title, ISBN, published year, availability controlled by the server, and author
+- Member: full name, unique email, optional phone, JoinedAt set by the server
+- Loan (Sprint 6): book, member, loan date, due date (loan date + 14 days), and optional return date
+An active loan has no return date.
+Architecture
+Create a three-project solution at the start of Sprint 5:
+LibraryApi.API       → Controllers, middleware, Program.cs
+       ↓
+LibraryApi.Business  → Services, DTOs, custom exceptions
+       ↓
+LibraryApi.Data      → Entities, DbContext, migrations, repositories, Unit of Work
+Dependency direction: API → Business → Data
+Rules:
+- Controllers stay thin and call one service.
+- Services own business rules and return DTOs, not entities.
+- Only services use repositories / Unit of Work.
+- The Business layer does not import EF Core; database access goes through repository methods.
+- Learners implement Generic Repository in Sprint 5 and Unit of Work in Sprint 6.
+Required endpoints
+Sprint	Endpoint	Purpose
+5	GET /api/authors	List authors with booksCount
+5	POST /api/authors	Create an author
+5	DELETE /api/authors/{id}	Delete an author only if they have no books
+5	GET /api/books	List books with author name
+5	POST /api/books	Create a book
+5	PUT /api/books/{id}	Update a book; client cannot change availability
+5	GET /api/members	List members
+5	GET /api/members/{id}	Get one member
+5	POST /api/members	Create a member
+6	POST /api/loans	Borrow a book
+6	PUT /api/loans/{id}/return	Return a loan
+6	GET /api/members/{id}/loans	List a member’s loans
+
+
+Other CRUD endpoints are intentionally out of scope unless the instructor requests them.
+HTTP status and business rules
+- Invalid DTO or missing body reference (e.g. unknown AuthorId) → 400
+- ID in the URL does not exist → 404
+- Conflict with current data/state (duplicate ISBN/email, deleting an author with books, borrowing an unavailable book, returning a loan twice) → 409
+- Unexpected errors → 500 with a generic message and no stack trace
+- Trim text input; store emails trimmed and lowercase.
+- Server controls IsAvailable and JoinedAt.
+- A member can have at most 3 active loans.
+- Borrowing requires an existing member and an existing, available book.
+- DueDate = LoanDate + 14 days.
+- Borrow and return each save changes once; a loan cannot be returned twice.
+Sprint 5 — Web API Foundations, Services & Business Logic
+Days: 57–71 · 15 days
+Project: Library Management API — Part 1
+Goal
+Build the foundation of a layered Web API with three projects, EF Core Code First, Generic Repository, DTOs, validation, consistent exception handling, and service-owned business rules.
+Topics
+- Solution/project references, N-Tier architecture, and Swagger / OpenAPI
+- Entities, relationships, Fluent API, connection strings, and dependency injection
+- EF Core migrations when DbContext lives in a different project
+- Generic Repository and generic constraints
+- Controllers, DTOs, validation, and over-posting
+- HTTP methods/status codes: 200, 201, 204, 400, 404, 409, 500
+- CreatedAtAction, PUT responses, middleware, and consistent JSON errors
+- Custom exceptions and business rules in services
+- Email normalization and uniqueness checks
+Implementation approach
+Build the API in vertical slices to avoid overwhelming learners:
+1. Complete the Author flow end-to-end: DTOs → service → repository access → controller → error behavior.
+2. Add the Book flow.
+3. Add the Member flow.
+4. Verify success cases, failure cases, status codes, and generated SQL before moving on.
+Suggested day-by-day focus
+- Day 57: Create solution, three projects, references, packages, and Swagger
+- Day 58: Add BaseEntity, Author, Book, Member, and AppDbContext
+- Day 59: Configure connection string, dependency injection, and first migration
+- Day 60: Implement Generic Repository
+- Day 61: Build Author DTOs/service and GET/POST endpoints
+- Day 62: Add custom exceptions and global exception middleware
+- Day 63: Add author deletion rule and 404/409 handling
+- Day 64: Build Book reads and creation
+- Day 65: Add Book update and protect server-controlled availability
+- Day 66: Build Member endpoints and email normalization
+- Day 67: Verify validation and HTTP status behavior
+- Day 68: Test endpoint success and failure cases
+- Day 69: Review generated SQL and query efficiency
+- Day 70: Fix issues and review architecture boundaries
+- Day 71: Finish short README, endpoint checklist, and Sprint 5 handoff
+Deliverables
+- Three-project API solution and Generic Repository
+- Author, Book, and Member services, DTOs, and controllers
+- Exception middleware and consistent error responses
+- 9 required endpoints
+- Endpoint verification checklist with expected and observed status codes
+- README with setup instructions and known limitations
+Sprint 6 — Unit of Work, Loans & Final Mock Interview
+Days: 72–86 · 15 days
+Project: Continue the same Library Management API — Part 2
+Goal
+Improve the existing solution with Unit of Work, add the Loan feature, verify cross-entity business rules, and finish with a project defense and technical mock interview.
+Topics
+- Why saving inside each repository can cause problems
+- Unit of Work on top of Generic Repository
+- One save per operation that changes multiple records
+- DbContext lifetime and dependency injection
+- Loan entity, relationships, delete behavior, and service-owned business rules
+- Edge-case tests, regression checks, safe refactoring, and architecture review
+Suggested day-by-day focus
+- Day 72: Establish baseline; confirm Sprint 5 tests still pass
+- Day 73: Add IUnitOfWork / UnitOfWork; repositories track changes without saving
+- Day 74: Refactor services to Unit of Work and rerun Sprint 5 tests
+- Day 75: Add Loan entity, relationships, migration, and DTOs
+- Day 76: Implement member loan history
+- Day 77: Implement borrowing rules and one save
+- Day 78: Implement return flow and prevent duplicate returns
+- Day 79: Add the three Loan endpoints
+- Day 80: Test successful borrow/return and important failure cases
+- Day 81: Review Unit of Work and one-save behavior
+- Day 82: Fix errors and verify responses
+- Days 83–84: Optional concurrency extension; if skipped, use as buffer for required work
+- Day 85: Architecture and code review; remove unused methods and verify layer boundaries
+- Day 86: Final Project Defense & Technical Mock Interview
+Final Mock Interview — Day 86
+The learner presents the database and API, explains the request flow and architecture, justifies important decisions, answers technical follow-up questions, and identifies what they would improve next.
+Interview areas:
+- C# collections, generics, delegates, lambdas, and events
+- LINQ execution, projection, and query behavior
+- Database design, relationships, constraints, and SQL
+- EF Core, migrations, tracking, generated SQL, and N+1
+- Web API, HTTP status codes, validation, and exception handling
+- Dependency injection and architecture boundaries
+- Generic Repository, Unit of Work, and business rules
+- Debugging, edge cases, trade-offs, and project-specific decisions
+The interview evaluates understanding and reasoning, not memorized answers. Each learner receives structured feedback: strengths, gaps, and a next-step action plan.
+Deliverables
+- Unit of Work and refactored services
+- Loan entity, migration, service, and controller
+- 3 additional endpoints (12 total across Sprints 5–6)
+- Regression and edge-case verification
+- Updated README, final project presentation/defense, mock interview, and individual feedback
+🏁 Level 1 Completion Criteria
+A learner completes Level 1 when:
+- All six sprints are completed.
+- The Library Management Database and EF Core implementation work.
+- The Library Management API works with the 12 required endpoints.
+- Core business rules and expected error responses are verified.
+- The learner can explain the database, request flow, architecture, and important trade-offs.
+- The learner completes the final project defense / mock interview.
+🧠 Engineering Practices Throughout the Level
+Debugging
+Use Symptom → Observation → Hypothesis → Experiment → Root Cause → Fix. Avoid changing random code until it works.
+Generated SQL
+From Sprint 4 onward, inspect SQL generated by EF Core for selected queries and explain the relationship between the LINQ expression and SQL.
+Code review
+Review naming, responsibility boundaries, duplication, error handling, status codes, and query efficiency.
+Git discipline
+- Commit after each finished requirement; include the requirement ID for Sprints 1–4.
+- Commit before each refactor step.
+- Use a branch for Sprint 6.
+- Push each project to GitHub with a README.
